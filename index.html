@@ -323,7 +323,7 @@
 			width: 400px;
 			height: 400px;
 			background:rgba(255, 255, 255, 0.2);
-			border: 1px inset rgba(255, 255, 255, 0.1);
+			border: 1px outset rgba(0, 255, 225, 0.9);
 			border-radius: 100%;
 			transition: 0.82s;
 		}
@@ -1831,7 +1831,7 @@
 
 				<!-- Grid-12 -->
 				<div class="grid-item">
-					<iframe id="startMenuMusicPlayer" src="./pages/Applications/02-MusicPlayer00/index.html" title="Iframe Example"></iframe>
+					<!-- <iframe id="startMenuMusicPlayer" src="./pages/Applications/02-MusicPlayer00/index.html" title="Iframe Example"></iframe> -->
 				</div>  
 				<!-- <div class="grid-item">13</div>
 				<div class="grid-item">14</div>
@@ -2984,6 +2984,7 @@
 
 			let TimeClockGears
 			let mesh_TheTimeClockUI_A1_L1
+			let mesh_TheTimeClockUI_A1_L1_1
 			let mesh_TheTimeClockUI_A1_L2
 			let mesh_TheTimeClockUI_A1_L3
 			let mesh_TheTimeClockUI_A1_L4
@@ -3113,8 +3114,9 @@
 
 				// Light Setup
 				const light = new THREE.HemisphereLight( 0xeeeeff, 0x777788, 0.75 );
-				light.position.set( 0.5, 1, 0.75 );
+				light.position.set( -10, 0, -100 );
 				scene.add( light );
+				camera.attach( light )
 
 				// Pointer Lock Controls Init Setup
 				controls = new PointerLockControls( camera, document.body );
@@ -3413,6 +3415,63 @@
 				// const DTD01 = textureLoader.load('./assets/img/test/TextScreenshot.png')
 				const DTD01 = textureLoader.load('./assets/img/logo/TextScreenshot.png')
 				const DTDB01 = textureLoader.load('./assets/img/frames/GoldenFrame.png')
+
+
+
+				// --------------------------------------
+				// Search.LeftHandOrbit
+				// For the LeftHandUI Menu 
+				// --------------------------------------
+				const orbitA_colorTex = textureLoader.load('./assets/textures/metalTextures/goldNugget01/Gold_Nugget_001_COLOR.jpg')
+				const orbitA_AlphaTex = textureLoader.load('./assets/textures/metalTextures/goldNugget01/Marble_Tiles_001_opacity.jpg')
+				const orbitA_AmbientOcclusionTex = textureLoader.load('./assets/textures/metalTextures/goldNugget01/Gold_Nugget_001_OCC.jpg')
+				const orbitA_HeightTex = textureLoader.load('./assets/textures/metalTextures/goldNugget01/Gold_Nugget_001_DISP.png')
+				const orbitA_NormalTex = textureLoader.load('./assets/textures/metalTextures/goldNugget01/Gold_Nugget_001_NORM.jpg')
+				const orbitA_MetalTex = textureLoader.load('./assets/textures/metalTextures/goldNugget01/Marble_Tiles_001_metallic.jpg')
+				const orbitA_RoughnessTex = textureLoader.load('./assets/textures/metalTextures/goldNugget01/Gold_Nugget_001_ROUGH.jpg')
+
+
+
+				// --------------------------------------
+				// Search.FloorTex
+				// For the LeftHandUI Menu 
+				// --------------------------------------
+
+				const Tex_GoldFloorDesign01_colorTex = textureLoader.load('./assets/textures/orbitTextures/goldTile01/Tiles_044_basecolor.jpg')
+				const Tex_GoldFloorDesign01_AmbientOcclusionTex = textureLoader.load('./assets/textures/orbitTextures/goldTile01/Tiles_044_ambientOcclusion.jpg')
+				const Tex_GoldFloorDesign01_HeightTex = textureLoader.load('./assets/textures/orbitTextures/goldTile01/Tiles_044_height.png')
+				const Tex_GoldFloorDesign01_NormalTex = textureLoader.load('./assets/textures/orbitTextures/goldTile01/Tiles_044_normal.jpg')
+				const Tex_GoldFloorDesign01_MetalTex = textureLoader.load('./assets/textures/orbitTextures/goldTile01/Tiles_044_metallic.jpg')
+				const Tex_GoldFloorDesign01_RoughnessTex = textureLoader.load('./assets/textures/orbitTextures/goldTile01/Tiles_044_roughness.jpg')
+
+
+
+				// --------------------------------------
+				// Search.LeftHandOrbit
+				// For the LeftHandUI Menu 
+				// --------------------------------------
+				const Tex_KHGlass_colorTex = textureLoader.load('./assets/textures/glassTextures/glassTexture01_KingdomHearts01/Glass_Pattern_002_basecolor.jpg')
+				const Tex_KHGlass_AlphaTex = textureLoader.load('./assets/textures/glassTextures/glassTexture01_KingdomHearts01/Glass_Pattern_002_opacity.jpg')
+				const Tex_KHGlass_AmbientOcclusionTex = textureLoader.load('./assets/textures/glassTextures/glassTexture01_KingdomHearts01/Glass_Pattern_002_ambientOcclusion.jpg')
+				const Tex_KHGlass_HeightTex = textureLoader.load('./assets/textures/glassTextures/glassTexture01_KingdomHearts01/Glass_Pattern_002_height.png')
+				const Tex_KHGlass_NormalTex = textureLoader.load('./assets/textures/glassTextures/glassTexture01_KingdomHearts01/Glass_Pattern_002_normal.jpg')
+				const Tex_KHGlass_MetalTex = textureLoader.load('./assets/textures/glassTextures/glassTexture01_KingdomHearts01/Glass_Pattern_002_metallic.jpg')
+				const Tex_KHGlass_RoughnessTex = textureLoader.load('./assets/textures/glassTextures/glassTexture01_KingdomHearts01/Glass_Pattern_002_roughness.jpg')
+
+
+
+				// --------------------------------------
+				// Search.LeftHandOrbit
+				// For the LeftHandUI Menu 
+				// --------------------------------------
+				const WhiteMarble_colorTex = textureLoader.load('./assets/textures/marbleTextures/whiteMarble01/Marble_Tiles_001_basecolor.jpg')
+				const WhiteMarble_AlphaTex = textureLoader.load('./assets/textures/marbleTextures/whiteMarble01/Marble_Tiles_001_opacity.jpg')
+				const WhiteMarble_AmbientOcclusionTex = textureLoader.load('./assets/textures/marbleTextures/whiteMarble01/Marble_Tiles_001_ambientOcclusion.jpg')
+				const WhiteMarble_HeightTex = textureLoader.load('./assets/textures/marbleTextures/whiteMarble01/Marble_Tiles_001_height.png')
+				const WhiteMarble_NormalTex = textureLoader.load('./assets/textures/marbleTextures/whiteMarble01/Marble_Tiles_001_normal.jpg')
+				const WhiteMarble_MetalTex = textureLoader.load('./assets/textures/marbleTextures/whiteMarble01/Marble_Tiles_001_metallic.jpg')
+				const WhiteMarble_RoughnessTex = textureLoader.load('./assets/textures/marbleTextures/whiteMarble01/Marble_Tiles_001_roughness.jpg')
+
 
 
 
@@ -8050,6 +8109,88 @@
 				camera.add(bothUI_Hands02)
 
 
+				// OrbitMenu LeftHand
+				const leftHandOrbitMenuHorz01_root = new THREE.Group()
+				leftHandOrbitMenuHorz01_root.position.set(0, 0, 0)
+				leftHandOrbitMenuHorz01_root.scale.set(.5, .5, .5)
+
+
+				const ringSpacesOrbit01_params = {
+					radius: 50,
+					tube: 3,
+					radialSegments: 64,
+					tubularSegments: 64,
+					arc: Math.PI * 2,
+				}
+
+
+				// Geometry
+				const geo_leftHandOrbitMenuHorz01_ringSpaces01 = new THREE.TorusGeometry(
+					ringSpacesOrbit01_params.radius,
+					ringSpacesOrbit01_params.tube,
+					ringSpacesOrbit01_params.radialSegments,
+					ringSpacesOrbit01_params.tubularSegments,
+					ringSpacesOrbit01_params.arc,
+				)
+
+
+				// // First Orbit (Horizontal)
+				const leftHandOrbitMenuHorz01_ringSpaces01 = new THREE.Group()
+				leftHandOrbitMenuHorz01_ringSpaces01.position.set(0, 0, -25)
+
+
+				const mat_leftHandOrbitMenuHorz01_ringSpaces01 = new THREE.MeshToonMaterial({ map: orbitA_colorTex, side: THREE.DoubleSide });
+
+				const mesh_leftHandOrbitMenuHorz01_ringSpaces01 = new THREE.Mesh(
+					geo_leftHandOrbitMenuHorz01_ringSpaces01,
+					mat_leftHandOrbitMenuHorz01_ringSpaces01,
+				)
+
+				// // |- # Settings for [ mat_leftHandOrbitMenuHorz01_ringSpaces01 ]
+				// // |- ## Settings/mappings
+				mat_leftHandOrbitMenuHorz01_ringSpaces01.transparent = true;
+				mat_leftHandOrbitMenuHorz01_ringSpaces01.alphaMap = orbitA_colorTex
+
+				mat_leftHandOrbitMenuHorz01_ringSpaces01.aoMap = orbitA_AmbientOcclusionTex
+				mat_leftHandOrbitMenuHorz01_ringSpaces01.aoMapIntensity = 1
+
+				mat_leftHandOrbitMenuHorz01_ringSpaces01.displacementMap = orbitA_HeightTex
+				mat_leftHandOrbitMenuHorz01_ringSpaces01.displacementScale = 0.05
+
+				mat_leftHandOrbitMenuHorz01_ringSpaces01.metalnessMap = orbitA_MetalTex
+				mat_leftHandOrbitMenuHorz01_ringSpaces01.metalness = 1
+
+				mat_leftHandOrbitMenuHorz01_ringSpaces01.roughnessMap = orbitA_RoughnessTex
+				mat_leftHandOrbitMenuHorz01_ringSpaces01.roughness = 1
+
+				mat_leftHandOrbitMenuHorz01_ringSpaces01.normalMap = orbitA_NormalTex
+				// mat_leftHandOrbitMenuHorz01_ringSpaces01.normalScale.set(0.5, 0.5)
+
+
+				// mesh_leftHandOrbitMenuHorz01_ringSpaces01.position.set(0, 0, 0)
+				// mesh_leftHandOrbitMenuHorz01_ringSpaces01.rotation.set(0, 0, 0)
+				mesh_leftHandOrbitMenuHorz01_ringSpaces01.scale.set(1, 1, 1)
+
+				mesh_leftHandOrbitMenuHorz01_ringSpaces01.rotateX( - Math.PI / 2 );
+
+
+				leftHandOrbitMenuHorz01_ringSpaces01.add(mesh_leftHandOrbitMenuHorz01_ringSpaces01)
+				leftUI_Hand.add(leftHandOrbitMenuHorz01_ringSpaces01)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 				// LeftHand Particle Geometry
@@ -8244,7 +8385,7 @@
 				}
 
 				const TheTimeClockUI = new THREE.Group()
-				TheTimeClockUI.position.set(-250, 70.5, -30)
+				TheTimeClockUI.position.set(-255, 70.5, -30)
 				TheTimeClockUI.scale.set(0.35, 0.35, 0.35)
 				TheTimeClockUI.rotation.set(0, 0, 0)
 				// TheTimeClockUI.rotateZ( - Math.PI / 2 );
@@ -8285,17 +8426,29 @@
 				mesh_TheTimeClockUI_A1_L1.scale.set(0.5, 0.5, 0.5);
 				mesh_TheTimeClockUI_A1_L1.rotation.set(0, 0, 0)
 				// mesh_TheTimeClockUI_A1_L1.rotateX( - Math.PI / 2 );
+				TimeClockGears.add(mesh_TheTimeClockUI_A1_L1)
+
+
+				const mat_TheTimeClockUI_A1_L1_1 = new THREE.MeshBasicMaterial({ map: GearTex05, side: THREE.DoubleSide });
+				mesh_TheTimeClockUI_A1_L1_1 = new THREE.Mesh(geo_TheTimeClockUI_A1_L1, mat_TheTimeClockUI_A1_L1_1);
+				mat_TheTimeClockUI_A1_L1_1.transparent = true;
+				mat_TheTimeClockUI_A1_L1_1.alphaMap = GearTex05;
+				mesh_TheTimeClockUI_A1_L1_1.position.set(0, 0, -22);
+				// mesh_TheTimeClockUI_A1_L1_1.position.set(-15000, 0, 0);
+				mesh_TheTimeClockUI_A1_L1_1.scale.set(1.5, 1.5, 1.5);
+				mesh_TheTimeClockUI_A1_L1_1.rotation.set(0, 0, 0)
+				// mesh_TheTimeClockUI_A1_L1_1.rotateX( - Math.PI / 2 );
 
 
 				
-				TimeClockGears.add(mesh_TheTimeClockUI_A1_L1)
+				TimeClockGears.add(mesh_TheTimeClockUI_A1_L1_1)
 				TheTimeClockUI.add(TimeClockGears)
 
 
 
-				const geo_TheTimeClockUI_A1_L2 = new THREE.CircleGeometry(50, 50)
+				
 				const mat_TheTimeClockUI_A1_L2 = new THREE.MeshBasicMaterial({ map: GearTex05, side: THREE.DoubleSide });
-				mesh_TheTimeClockUI_A1_L2 = new THREE.Mesh(geo_TheTimeClockUI_A1_L2, mat_TheTimeClockUI_A1_L2);
+				mesh_TheTimeClockUI_A1_L2 = new THREE.Mesh(geo_TheTimeClockUI_A1_L1, mat_TheTimeClockUI_A1_L2);
 				mat_TheTimeClockUI_A1_L2.transparent = true;
 				mat_TheTimeClockUI_A1_L2.alphaMap = GearTex05;
 				mesh_TheTimeClockUI_A1_L2.position.set(0, 25, -21);
@@ -8309,9 +8462,9 @@
 
 
 
-				const geo_TheTimeClockUI_A1_L3 = new THREE.CircleGeometry(50, 50)
+				
 				const mat_TheTimeClockUI_A1_L3 = new THREE.MeshBasicMaterial({ map: GearTex05, side: THREE.DoubleSide });
-				mesh_TheTimeClockUI_A1_L3 = new THREE.Mesh(geo_TheTimeClockUI_A1_L3, mat_TheTimeClockUI_A1_L3);
+				mesh_TheTimeClockUI_A1_L3 = new THREE.Mesh(geo_TheTimeClockUI_A1_L1, mat_TheTimeClockUI_A1_L3);
 				mat_TheTimeClockUI_A1_L3.transparent = true;
 				mat_TheTimeClockUI_A1_L3.alphaMap = GearTex05;
 				mesh_TheTimeClockUI_A1_L3.position.set(0, -25, -21);
@@ -8325,9 +8478,9 @@
 
 
 
-				const geo_TheTimeClockUI_A1_L4 = new THREE.CircleGeometry(50, 50)
+				
 				const mat_TheTimeClockUI_A1_L4 = new THREE.MeshBasicMaterial({ map: GearTex05, side: THREE.DoubleSide });
-				mesh_TheTimeClockUI_A1_L4 = new THREE.Mesh(geo_TheTimeClockUI_A1_L4, mat_TheTimeClockUI_A1_L4);
+				mesh_TheTimeClockUI_A1_L4 = new THREE.Mesh(geo_TheTimeClockUI_A1_L1, mat_TheTimeClockUI_A1_L4);
 				mat_TheTimeClockUI_A1_L4.transparent = true;
 				mat_TheTimeClockUI_A1_L4.alphaMap = GearTex05;
 				mesh_TheTimeClockUI_A1_L4.position.set(-25, 0, -21);
@@ -8340,9 +8493,9 @@
 				
 
 
-				const geo_TheTimeClockUI_A1_L5 = new THREE.CircleGeometry(50, 50)
+				
 				const mat_TheTimeClockUI_A1_L5 = new THREE.MeshBasicMaterial({ map: GearTex05, side: THREE.DoubleSide });
-				mesh_TheTimeClockUI_A1_L5 = new THREE.Mesh(geo_TheTimeClockUI_A1_L5, mat_TheTimeClockUI_A1_L5);
+				mesh_TheTimeClockUI_A1_L5 = new THREE.Mesh(geo_TheTimeClockUI_A1_L1, mat_TheTimeClockUI_A1_L5);
 				mat_TheTimeClockUI_A1_L5.transparent = true;
 				mat_TheTimeClockUI_A1_L5.alphaMap = GearTex05;
 				mesh_TheTimeClockUI_A1_L5.position.set(25, 0, -21);
@@ -13596,17 +13749,17 @@
 				const folderTimeClockUI = gui.addFolder("######## mainHud ########")
 				
 
-				folderTimeClockUI.add(mainClockApplication4SphereGrid.position, 'x').min(-1500).max(55000).step(100).name('Cc-Back-x');
-				folderTimeClockUI.add(mainClockApplication4SphereGrid.position, 'y').min(-2300).max(55300).step(100).name('Cc-Back-y');
-				folderTimeClockUI.add(mainClockApplication4SphereGrid.position, 'z').min(-20000).max(20000).step(1).name('Cc-Back-z');
+				folderTimeClockUI.add(mesh_TheTimeClockUI_A1_L1_1.position, 'x').min(-1500).max(55000).step(100).name('Cc-Back-x');
+				folderTimeClockUI.add(mesh_TheTimeClockUI_A1_L1_1.position, 'y').min(-2300).max(55300).step(100).name('Cc-Back-y');
+				folderTimeClockUI.add(mesh_TheTimeClockUI_A1_L1_1.position, 'z').min(-20000).max(20000).step(1).name('Cc-Back-z');
 
-				folderTimeClockUI.add(mainClockApplication4SphereGrid.rotation, 'x').min(-360).max(360).step(1).name('Rotation-x');
-				folderTimeClockUI.add(mainClockApplication4SphereGrid.rotation, 'y').min(-360).max(360).step(1).name('Rotation-y');
-				folderTimeClockUI.add(mainClockApplication4SphereGrid.rotation, 'z').min(-360).max(360).step(1).name('Rotation-z');
+				folderTimeClockUI.add(mesh_TheTimeClockUI_A1_L1_1.rotation, 'x').min(-360).max(360).step(1).name('Rotation-x');
+				folderTimeClockUI.add(mesh_TheTimeClockUI_A1_L1_1.rotation, 'y').min(-360).max(360).step(1).name('Rotation-y');
+				folderTimeClockUI.add(mesh_TheTimeClockUI_A1_L1_1.rotation, 'z').min(-360).max(360).step(1).name('Rotation-z');
 
-				folderTimeClockUI.add(mainClockApplication4SphereGrid.scale, 'x').min(-100).max(100).step(1).name('Scale-x');
-				folderTimeClockUI.add(mainClockApplication4SphereGrid.scale, 'y').min(-100).max(100).step(1).name('Scale-y');
-				folderTimeClockUI.add(mainClockApplication4SphereGrid.scale, 'z').min(-100).max(100).step(1).name('Scale-z');
+				folderTimeClockUI.add(mesh_TheTimeClockUI_A1_L1_1.scale, 'x').min(-100).max(100).step(1).name('Scale-x');
+				folderTimeClockUI.add(mesh_TheTimeClockUI_A1_L1_1.scale, 'y').min(-100).max(100).step(1).name('Scale-y');
+				folderTimeClockUI.add(mesh_TheTimeClockUI_A1_L1_1.scale, 'z').min(-100).max(100).step(1).name('Scale-z');
 
 
 				
@@ -14032,7 +14185,7 @@
 				mesh_rightUIGear_A6_L0.rotation.z = time * 0.0002
 				mesh_rightUIGear_A7_L0.rotation.z = time * 0.0002
 
-				TimeClockGears.rotation.z = time * 0.0001
+				TimeClockGears.rotation.z = time * -0.0001
 				mesh_TheTimeClockUI_A1_L2.rotation.z = time * 0.0002
 				mesh_TheTimeClockUI_A1_L3.rotation.z = time * 0.0002
 				mesh_TheTimeClockUI_A1_L4.rotation.z = time * 0.0002
