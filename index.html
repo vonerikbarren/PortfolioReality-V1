@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Command Center Δ</title>
+		<title>Portfolio-§Δ1</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="./assets/css/main.css">
@@ -1831,7 +1831,7 @@
 
 				<!-- Grid-12 -->
 				<div class="grid-item">
-					<!-- <iframe id="startMenuMusicPlayer" src="./pages/Applications/02-MusicPlayer00/index.html" title="Iframe Example"></iframe> -->
+					<iframe id="startMenuMusicPlayer" src="./pages/Applications/02-MusicPlayer00/index.html" title="Iframe Example"></iframe>
 				</div>  
 				<!-- <div class="grid-item">13</div>
 				<div class="grid-item">14</div>
@@ -2593,6 +2593,8 @@
 			let mesh_LogoGearSpinnerM
 			let mesh_LogoGearSpinnerN
 			let mesh_LogoGearSpinnerO
+			let mesh_LogoGearSpinnerP
+			let mesh_LogoGearSpinnerQ
 
 			let RightHandCreativeCircleA
 			let mesh_RightHandCreativeCircleA
@@ -7714,7 +7716,7 @@
 				mesh_LogoGearSpinnerG = new THREE.Mesh(geo_LogoGearSpinnerA, mat_LogoGearSpinnerG);
 				mat_LogoGearSpinnerG.transparent = true;
 				mat_LogoGearSpinnerG.alphaMap = logo_RotatingTriangle;
-				mesh_LogoGearSpinnerG.position.set(1, 80, 1.73);
+				mesh_LogoGearSpinnerG.position.set(1, 85, 1.73);
 				// mesh_LogoGearSpinnerG.position.set(-15000, 0, 0);
 				mesh_LogoGearSpinnerG.scale.set(0.7, 0.7, 0.7);
 				mesh_LogoGearSpinnerG.rotation.set(0, 0, 0)
@@ -7829,6 +7831,49 @@
 
 
 				LogoGearSpinnerA.add(mesh_LogoGearSpinnerN)
+
+
+
+				const mat_LogoGearSpinnerO = new THREE.MeshBasicMaterial({ map: LightCore_L0, side: THREE.DoubleSide });
+				mesh_LogoGearSpinnerO = new THREE.Mesh(geo_LogoGearSpinnerA, mat_LogoGearSpinnerO);
+				mat_LogoGearSpinnerO.transparent = true;
+				mat_LogoGearSpinnerO.alphaMap = LightCore_L0;
+				mesh_LogoGearSpinnerO.position.set(1, 77, 1.742);
+				// mesh_LogoGearSpinnerO.position.set(-15000, 0, 0);
+				mesh_LogoGearSpinnerO.scale.set(0.5, 0.5, 0.5);
+				mesh_LogoGearSpinnerO.rotation.set(0, 0, 0)
+				// mesh_LogoGearSpinnerA.rotateX( - Math.PI / 2 );
+
+
+				LogoGearSpinnerA.add(mesh_LogoGearSpinnerO)
+
+
+				const mat_LogoGearSpinnerP = new THREE.MeshBasicMaterial({ map: LightCore_L1, side: THREE.DoubleSide });
+				mesh_LogoGearSpinnerP = new THREE.Mesh(geo_LogoGearSpinnerA, mat_LogoGearSpinnerP);
+				mat_LogoGearSpinnerP.transparent = true;
+				mat_LogoGearSpinnerP.alphaMap = LightCore_L1;
+				mesh_LogoGearSpinnerP.position.set(1, 77, 1.722);
+				// mesh_LogoGearSpinnerP.position.set(-15000, 0, 0);
+				mesh_LogoGearSpinnerP.scale.set(0.75, 0.75, 0.75);
+				mesh_LogoGearSpinnerP.rotation.set(0, 0, 0)
+				// mesh_LogoGearSpinnerA.rotateX( - Math.PI / 2 );
+
+
+				LogoGearSpinnerA.add(mesh_LogoGearSpinnerP)
+
+
+				const mat_LogoGearSpinnerQ = new THREE.MeshBasicMaterial({ map: LightCore_L1, side: THREE.DoubleSide });
+				mesh_LogoGearSpinnerQ = new THREE.Mesh(geo_LogoGearSpinnerA, mat_LogoGearSpinnerQ);
+				mat_LogoGearSpinnerQ.transparent = true;
+				mat_LogoGearSpinnerQ.alphaMap = LightCore_L1;
+				mesh_LogoGearSpinnerQ.position.set(1, 77, 1.722);
+				// mesh_LogoGearSpinnerQ.position.set(-15000, 0, 0);
+				mesh_LogoGearSpinnerQ.scale.set(0.75, 0.75, 0.75);
+				mesh_LogoGearSpinnerQ.rotation.set(0, 0, 0)
+				// mesh_LogoGearSpinnerA.rotateX( - Math.PI / 2 );
+
+
+				LogoGearSpinnerA.add(mesh_LogoGearSpinnerQ)
 
 
 
@@ -8199,7 +8244,7 @@
 				}
 
 				const TheTimeClockUI = new THREE.Group()
-				TheTimeClockUI.position.set(-180, 70.5, -30)
+				TheTimeClockUI.position.set(-250, 70.5, -30)
 				TheTimeClockUI.scale.set(0.35, 0.35, 0.35)
 				TheTimeClockUI.rotation.set(0, 0, 0)
 				// TheTimeClockUI.rotateZ( - Math.PI / 2 );
@@ -8228,7 +8273,7 @@
 				)
 
 				TimeClockGears = new THREE.Group()
-				TimeClockGears.position.set(-40, 14, -21)
+				TimeClockGears.position.set(-57, 14, -21)
 
 				const geo_TheTimeClockUI_A1_L1 = new THREE.CircleGeometry(50, 50)
 				const mat_TheTimeClockUI_A1_L1 = new THREE.MeshBasicMaterial({ map: GearTex05, side: THREE.DoubleSide });
@@ -13941,10 +13986,14 @@
 				mesh_LogoGearSpinnerC.rotation.z = time * 0.0011
 				mesh_LogoGearSpinnerD.rotation.z = time * -0.0011
 				mesh_LogoGearSpinnerE.rotation.z = time * -0.001
+				// mesh_LogoGearSpinnerG.rotation.z = time * 0.001
 				mesh_LogoGearSpinnerH.rotation.z = time * -0.001
 				mesh_LogoGearSpinnerI.rotation.z = time * -0.0001
 				mesh_LogoGearSpinnerJ.rotation.z = time * 0.0005
 				mesh_LogoGearSpinnerM.rotation.z = time * 0.005
+				mesh_LogoGearSpinnerO.rotation.z = time * 0.01
+				mesh_LogoGearSpinnerP.rotation.z = time * 0.1
+				mesh_LogoGearSpinnerQ.rotation.z = time * -0.1
 
 
 				// Arrow Rotator
