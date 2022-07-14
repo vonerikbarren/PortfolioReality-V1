@@ -9,6 +9,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Quantico&display=swap" rel="stylesheet">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
 
 		<style>
 			/* .lil-gui {
@@ -1904,6 +1905,8 @@
 			// Imports
 			import * as THREE from './libraries/modules/three.module.js';
 			import { PointerLockControls } from './libraries/controllers/PointerLockControls.js';
+			import { TransformControls } from './libraries/controllers/TransformControls.js';
+			import { OrbitControls } from './libraries/controllers/OrbitControls.js';
 			import { GUI } from './libraries/config/lil-gui.module.min.js';
       	import { TWEEN } from './libraries/controllers/tween.module.min.js';
 			import { CSS3DRenderer, CSS3DObject } from './libraries/renderers/CSS3DRenderer.js';
@@ -2080,6 +2083,7 @@
 
 			// Initial Variable Declarations
 			let camera, scene, renderer, cssrenderer, controls, textureLoader, object, root, background;
+			let transformControls, orbitControls
 
 			
 
@@ -3088,10 +3092,12 @@
 				// console.log(camera)
 
 				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000000 );
-				console.log(camera)
+				console.log(camera.position)
 
 				// |- Camera - Base
-				camera.position.set(0, 0, 150);
+				camera.position.set(0, 0, 150); // For Application
+
+				camera.position.set(0, 0, 500)
 				
 
 				// |- Camera A little higher 
@@ -3120,6 +3126,14 @@
 
 				// Pointer Lock Controls Init Setup
 				controls = new PointerLockControls( camera, document.body );
+				controls.addEventListener('change', render);
+				
+				
+
+				// transformControls.addEventListener('draggin-changed', function (event) {
+				// 	orbitControls.enabled = ! event.value
+				// })
+				
 
 
 				// Textures Setup
@@ -4841,53 +4855,49 @@
 
 					}
 
-			//   camera.add(targets.sphere)
+			
 
 
+				// helix
 
-		
+					for (let i = 0, l = objects.length; i < l; i++) {
 
-
-					// helix
-
-						for (let i = 0, l = objects.length; i < l; i++) {
-
-							const theta = (i * 25) * 0.175 + ( Math.PI * 2 );
-							const y = - (i * 1000) + 12366.118;
+						const theta = (i * 25) * 0.175 + ( Math.PI * 2 );
+						const y = - (i * 1000) + 12366.118;
 
 
-							const object = new THREE.Object3D();
+						const object = new THREE.Object3D();
 
-							// Circumference Size Here...
-							object.position.setFromCylindricalCoords(1000, theta, y);
+						// Circumference Size Here...
+						object.position.setFromCylindricalCoords(1000, theta, y);
 
-							vector.x = object.position.x * 2;
-							vector.y = object.position.y;
-							vector.z = object.position.z * 2;
+						vector.x = object.position.x * 2;
+						vector.y = object.position.y;
+						vector.z = object.position.z * 2;
 
-							object.lookAt(vector);
+						object.lookAt(vector);
 
-							targets.helix.push(object);
-							// object.position.set(0, 1000, 0)
+						targets.helix.push(object);
+						// object.position.set(0, 1000, 0)
 
-						}       
+					}       
 
         
-						// grid
+				// grid
 
-							for (let i = 0; i < objects.length; i++) {
+					for (let i = 0; i < objects.length; i++) {
 
-								const object = new THREE.Object3D();
+						const object = new THREE.Object3D();
 
-								object.position.x = ((i % 5) * 400) - 800;
-								object.position.y = ((Math.floor(i / 5) % 5) * 400) + 12366.118;
-								object.position.z = (Math.floor(i / 25)) * 1000 - 2000;
+						object.position.x = ((i % 5) * 400) - 800;
+						object.position.y = ((Math.floor(i / 5) % 5) * 400) + 12366.118;
+						object.position.z = (Math.floor(i / 25)) * 1000 - 2000;
 
-								targets.grid.push(object);
+						targets.grid.push(object);
 
 
 
-							}
+					}
 
 
 			// Movement Function
@@ -5000,7 +5010,97 @@
 						case 'KeyY': 
 							if ( canDrop === true ) velocity.y -= 200
 							break
+						
+						case 'KeyT': 
+							transformControls = new TransformControls(camera, renderer.domElement)
+							transformControls.addEventListener('change', render);
+							break
 
+						case 'KeyO': 
+							orbitControls = new OrbitControls( camera, renderer.domElement);
+							orbitControls.update();
+							break
+						case 'KeyC':
+							
+							camera.position.set(0, 0, 0)
+							break
+						
+						case 'KeyShift' && 'KeyV':
+							camera.position.set(1000000, 0, 0)
+							break
+						case 'Digit1':
+							// camera.position.set(0, 5000000, 0)
+							gsap.to(panelColumn01.position, {
+								duration: 2.5,
+								delay: .5,
+								y: 20000,
+							})
+							break
+						case 'Digit2': 
+							gsap.to(panelColumn06.position, {
+								duration: 2.5,
+								delay: .25,
+								x: 5000,
+								y: 2000,
+							})
+							
+							break
+						case 'Digit3':
+							gsap.to(panelColumn06.position, {
+								duration: 12.5,
+								delay: 0,
+								x: 10000,
+								y: 300000, 
+								z: 12270,
+							})
+
+							// gsap.to(panelColumn06.position, {
+							// 	duration: 12.5,
+							// 	delay: .5,
+							// 	x: 0,
+							// 	y: 0, 
+							// 	z: -1002270,
+							// })
+							
+							break
+						// case 'KeyH' && 'KeyU' && 'Digit2':
+						// 	gsap.to(camera.position, {
+						// 			duration: 10,
+						// 			delay: .5,
+						// 			x: 1000000,
+						// 			y: -.5,
+						// 		})
+						// 	// MainHudContainerA01_L0.position.set(0, 5, -50)
+						// 	break
+						case 'ShiftRight':
+							// centralSphereMatrix.position.set(0,0,0)
+							// centralSphereMatrix.attach(camera)
+							gsap.to(camera.position, {
+									duration: 7.5,
+									delay: 0,
+									ease: "slow (0.7, 0.7, false)",
+									x: 1000000,
+									y: -.5,
+							})
+							// gsap.to(centralSphereMatrix.position, {
+							// 	duration: 7,
+							// 	delay: 0.5,
+							// 	rotationY: 360,
+							// 	x: 500000,
+							// 	y: -.5,
+							// })
+								
+							// MainHudContainerA01_L0.position.set(0, 5, -50)
+							break
+						case 'ShiftLeft':
+							gsap.to(camera.position, {
+									duration: 7.5,
+									delay: 0,
+									x: 0,
+									y: 0,
+									z: 0,
+								})
+							break
 					}
 
 				};
@@ -5029,6 +5129,28 @@
 						case 'KeyD':
 							moveRight = false;
 							break;
+						// case 'ShiftLeft': 
+						
+							
+						// 	// centralSphereMatrix.attach(camera)
+						// 		gsap.from(camera.position, {
+						// 			duration: 7,
+						// 			delay: .5,
+						// 			x: 1000000,
+						// 			y: 0,
+						// 			z: 0
+						// 		})
+
+						// 		gsap.to(camera.position, {
+						// 			duration: 7,
+						// 			delay: .5,
+						// 			x: 0,
+						// 			y: 0,
+						// 			z: 0
+						// 		})
+							
+							
+						// 	break
 
 					}
 
@@ -13793,9 +13915,18 @@
 
 				window.addEventListener( 'resize', onWindowResize );
 
+				window.addEventListener('keydown', function (event) {
+					switch (event.keyCode) {
+						case 81: // Q
+
+					}
+				})
 
 
-		}
+
+
+
+			}
 
 
 		//...............................................................................................
@@ -13891,7 +14022,7 @@
 			}
 
 			function render() {
-				const time = performance.now() * 0.001;
+				const time = performance.now() * 0.1;
 				
 			}
 
@@ -13917,7 +14048,14 @@
 			//..............................................cccc............................................................aaa.......tttt...eeee....
 			//.......................................................................................................................................
 
-
+			function moveItem() {
+				gsap.to(mesh.position, {
+					duration: 1,
+					delay: .5,
+					x: .5,
+					y: -.5,
+				})
+			}
 
 			function animate() {
 
