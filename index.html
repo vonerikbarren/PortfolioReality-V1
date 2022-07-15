@@ -1710,7 +1710,7 @@
 			
 			
 							<!-- VideoDomain03: cContainerTest -->
-							<video id="video04" class="myVideo04" playsinline controls webkit-playsinline loop width="320" height="240" src="./assets/video/Firebird01.mp4"border: 5px 5px black;"></video>
+							<video id="video04" class="myVideo04" playsinline controls webkit-playsinline loop width="320" height="240" src="./assets/video/Rollerblading01.mp4" border: 5px 5px black;"></video>
 			
 			
 							<!-- VideoDomain03: PurpleTechTunnel -->
@@ -2091,6 +2091,28 @@
 			let mesh_gridbox_Tester, mesh_gridbox2_Tester, mesh_Tube01, mesh_Torus01
 			let mesh_gridbox3_Tester
 			let id, particles
+
+			// Cylinder Meshes
+			let transportTubeController
+			let transportTube_params
+
+			let transportTube01_toCmd
+			let mesh_transportTube01_toCmd
+
+			let transportTube02_toLeftBrain
+			let mesh_transportTube02_toLeftBrain
+
+			let transportTube03_toRightBrain
+			let mesh_transportTube03_toRightBrain
+
+			let transportTube04_toMemories
+			let mesh_transportTube04_toMemories
+
+			let transportTube05_toDreams
+			let mesh_transportTube05_toDreams
+
+			let transportTube06_toTheUnknown
+			let mesh_transportTube06_toTheUnknown
 
 			// TimeΔMeshes
 			let mesh_TimeΔSphere_L0, mesh_mainPlatform_L01
@@ -3097,7 +3119,7 @@
 				// |- Camera - Base
 				camera.position.set(0, 0, 150); // For Application
 
-				camera.position.set(0, 0, 500)
+				// camera.position.set(0, 0, 500) // For Testing
 				
 
 				// |- Camera A little higher 
@@ -5101,6 +5123,20 @@
 									z: 0,
 								})
 							break
+						
+						
+						// multiple points in animation
+						case 'KeyT' && 'KeyY' && 'ArrowUp' && 'Digit5':
+						gsap.to(mainContainer.position, {
+								duration: 7.5,
+									delay: 0,
+									x: 1000000,
+									y: 85000,
+									z: 0,
+							})
+							break
+
+							
 					}
 
 				};
@@ -5151,6 +5187,26 @@
 							
 							
 						// 	break
+						case 'ControlLeft':
+							gsap.to(camera.position, {
+								duration: 7.5,
+									delay: 0,
+									x: 0,
+									y: 50000,
+									z: 0,
+							})
+							break
+
+						case "ControlLeft" && "KeyG":
+							gsap.to(camera.position, {
+								duration: 7.5,
+									delay: 0,
+									x: 0,
+									y: 50000,
+									z: 50000,
+							})
+							break
+
 
 					}
 
@@ -5254,7 +5310,7 @@
 
 				const centralSphereMatrix = new THREE.Group()
 				// centralSphereMatrix.position.set(0, 1400, 0) For Ground Level
-				centralSphereMatrix.position.set(0, 10000000, 0)
+				centralSphereMatrix.position.set(0, 50000, 0)
 				centralSphereMatrix.scale.set(2, 2, 2)
 
 				const geo_centralSphereMatrix = new THREE.SphereGeometry(1000, 32, 32)
@@ -5297,6 +5353,59 @@
 				// // mesh_gridbox3_Tester.rotateX( - Math.PI / 2 );
 				// scene.add(mesh_gridbox3_Tester);
 				// objects.push(mesh_gridbox3_Tester)
+
+
+				transportTubeController = new THREE.Group()
+				transportTubeController.position.set(0, -5000, 0)
+				scene.add(transportTubeController)
+
+				transportTube_params = {
+					radiusTop: 10000,
+					radiusBottom: 10000,
+					height: 10000,
+					radialSegments: 32, 
+					heightSegments: 24,
+					openEnded: false,
+					thetaStart: 0,
+					thetaLength: 6.28,
+				}
+
+				const geo_transportTube = new THREE.CylinderGeometry(
+					transportTube_params.radiusTop,
+					transportTube_params.radiusBottom,
+					transportTube_params.height,
+					transportTube_params.radialSegments,
+					transportTube_params.heightSegments,
+					transportTube_params.openEnded,
+					transportTube_params.thetaStart,
+					transportTube_params.thetaLength,
+				)
+
+				// Search.transportTube01_toCmd
+				transportTube01_toCmd = new THREE.Group()
+				transportTubeController.add(transportTube01_toCmd)
+				transportTube01_toCmd.position.set(0, 20000, 0)
+
+				const mat_transportTube01_toCmd = new THREE.MeshBasicMaterial(
+					{ 
+						map: Grid19White, 
+						side: THREE.DoubleSide 
+					});
+
+				mesh_transportTube01_toCmd = new THREE.Mesh(
+					geo_transportTube,
+					mat_transportTube01_toCmd
+				)
+				
+				mat_transportTube01_toCmd.transparent = false;
+				mat_transportTube01_toCmd.alphaMap = Grid19White;
+				mesh_transportTube01_toCmd.position.set(0, 0, 0);
+				// mesh_transportTube01_toCmd.rotateX( - Math.PI / 2 );
+				mesh_transportTube01_toCmd.scale.y = 4
+
+				transportTube01_toCmd.add(mesh_transportTube01_toCmd)
+				
+
 
 				
 				
@@ -5435,7 +5544,7 @@
 				// Particle Geometry - End
 
 				const videoDomainMatrix = new THREE.Group()
-				videoDomainMatrix.position.set(0, -2000, 500)
+				videoDomainMatrix.position.set(0, -2000, 0)
 
 
 				// Search.Video
@@ -5592,8 +5701,8 @@
 				videoSphere03 = new THREE.Mesh(geo_videoSphere03, video03_Mat);
 				videoSphere03.transparent = true;
 				videoSphere03.alphaMap = video03_Tex
-				videoSphere03.position.set(100, 0, -100);
-				videoSphere03.scale.set(10, 10, 10)
+				videoSphere03.position.set(100, 50000, -100);
+				videoSphere03.scale.set(1000000, 1000000, 1000000)
 				videoDomainMatrix.add(videoSphere03);
 				
 
@@ -13871,17 +13980,17 @@
 				const folderTimeClockUI = gui.addFolder("######## mainHud ########")
 				
 
-				folderTimeClockUI.add(mesh_TheTimeClockUI_A1_L1_1.position, 'x').min(-1500).max(55000).step(100).name('Cc-Back-x');
-				folderTimeClockUI.add(mesh_TheTimeClockUI_A1_L1_1.position, 'y').min(-2300).max(55300).step(100).name('Cc-Back-y');
-				folderTimeClockUI.add(mesh_TheTimeClockUI_A1_L1_1.position, 'z').min(-20000).max(20000).step(1).name('Cc-Back-z');
+				folderTimeClockUI.add(mesh_transportTube01_toCmd.position, 'x').min(-1500).max(55000).step(100).name('Cc-Back-x');
+				folderTimeClockUI.add(mesh_transportTube01_toCmd.position, 'y').min(-2300).max(55300).step(100).name('Cc-Back-y');
+				folderTimeClockUI.add(mesh_transportTube01_toCmd.position, 'z').min(-20000).max(20000).step(1).name('Cc-Back-z');
 
-				folderTimeClockUI.add(mesh_TheTimeClockUI_A1_L1_1.rotation, 'x').min(-360).max(360).step(1).name('Rotation-x');
-				folderTimeClockUI.add(mesh_TheTimeClockUI_A1_L1_1.rotation, 'y').min(-360).max(360).step(1).name('Rotation-y');
-				folderTimeClockUI.add(mesh_TheTimeClockUI_A1_L1_1.rotation, 'z').min(-360).max(360).step(1).name('Rotation-z');
+				folderTimeClockUI.add(mesh_transportTube01_toCmd.rotation, 'x').min(-360).max(360).step(1).name('Rotation-x');
+				folderTimeClockUI.add(mesh_transportTube01_toCmd.rotation, 'y').min(-360).max(360).step(1).name('Rotation-y');
+				folderTimeClockUI.add(mesh_transportTube01_toCmd.rotation, 'z').min(-360).max(360).step(1).name('Rotation-z');
 
-				folderTimeClockUI.add(mesh_TheTimeClockUI_A1_L1_1.scale, 'x').min(-100).max(100).step(1).name('Scale-x');
-				folderTimeClockUI.add(mesh_TheTimeClockUI_A1_L1_1.scale, 'y').min(-100).max(100).step(1).name('Scale-y');
-				folderTimeClockUI.add(mesh_TheTimeClockUI_A1_L1_1.scale, 'z').min(-100).max(100).step(1).name('Scale-z');
+				folderTimeClockUI.add(mesh_transportTube01_toCmd.scale, 'x').min(-100).max(100).step(1).name('Scale-x');
+				folderTimeClockUI.add(mesh_transportTube01_toCmd.scale, 'y').min(-100).max(100).step(1).name('Scale-y');
+				folderTimeClockUI.add(mesh_transportTube01_toCmd.scale, 'z').min(-100).max(100).step(1).name('Scale-z');
 
 
 				
