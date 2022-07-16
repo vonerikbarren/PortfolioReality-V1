@@ -95,7 +95,8 @@
 				width: 100%;
 				height: 100%;
 				bottom: 0px;
-				background-color: rgba(31, 120, 96, 0.25);
+				/* background-color: rgba(31, 120, 96, 0.25); */
+				background-color: rgba(255, 255, 255, 0.25);
 				justify-content: center;
 				/* background-color: rgba(255,255,255,0.1); */
 				cursor: pointer;
@@ -545,7 +546,8 @@
 
 		video {
 			background: rgba(0, 255, 255, 0.5);
-			border: 5px outset rgba(0, 255, 255, 0.2);
+			border: 5px outset rgba(0, 255, 255, 0.9);
+			box-shadow: 1px 1px 1px rgba(0, 255, 255, 0.5);
 			border-radius: 10px;
 			padding: 10px;
 			margin: 10px;
@@ -932,7 +934,7 @@
 				grid-template-columns: 520px 620px 520px;
 				grid-template-rows: 100px 300px 300px;
 				/* background-color: #a500fe79; */
-				background-color: #00fafe79;
+				background-color: rgba(255, 255, 255, 0.25);
 				padding: 10px;
 				height: 100%;
 				width: 100%;
@@ -1153,7 +1155,8 @@
 				grid-template-columns: 600px 700px 600px;
 				grid-template-rows: 100px 300px 300px;
 				/* background-color: #a500fe79; */
-				background-color: #00fafe79;
+				/* background-color: #00fafe79; */
+				background-color: rgba(255, 255, 255, 0.5);
 				padding: 10px;
 				height: 100%;
 				width: 100%;
@@ -1162,9 +1165,10 @@
 			.grid-item {
 				/* background-color: rgba(0, 255, 187, 0.27);
 					border: 2.5px groove  rgba(0, 255, 187, 0.87); */
-				background-color: rgba(174, 0, 255, 0.27);
+				/* background-color: rgba(174, 0, 255, 0.27); */
 				/* border: 2.5px groove  rgba(195, 0, 255, 0.87); */
-				border: 2.5px groove  rgba(0, 255, 247, 0.87);
+				background-color: rgba(255, 255, 255, 0.5);
+				border: 1.5px groove  rgba(0, 255, 247, 0.7);
 				padding: 20px;
 				font-size: 16px;
 				text-align: center;
@@ -1706,7 +1710,7 @@
 							<video id="video02" class="myVideo02" playsinline controls webkit-playsinline  autoplay loop width="320" height="240" src="./assets/video/Equations2.mp4" border: 5px 5px black;"></video>
 			
 							<!-- VideoDomain02: Dr.StrangeTunnel -->
-							<video id="video03" class="myVideo03" playsinline controls webkit-playsinline loop width="320" height="240" src="./assets/video/whiteHexBg03.mp4"border: 5px 5px black;"></video>
+							<video id="video03" class="myVideo03" playsinline autoplay controls webkit-playsinline loop width="320" height="240" src="./assets/video/whiteHexBg02.mp4"border: 5px 5px black;"></video>
 			
 			
 							<!-- VideoDomain03: cContainerTest -->
@@ -3208,7 +3212,7 @@
 				// Logo
 				const logo_LargeNeonGreenGear = textureLoader.load('./assets/img/logo/logoComponents/BigGear_NeonGreen.png')
 				const logo_LargeNeonBlueGear = textureLoader.load('./assets/img/logo/logoComponents/BigGear_NeonBlue.png')
-				const logo_LargeNeonWhiteGear = textureLoader.load('./assets/img/logo/logoComponents/BigGear_NeonWhite.png')
+				const logo_LargeNeonWhiteGear = textureLoader.load('./assets/img/logo/logoComponents/GearWhite01.png')
 				const logo_LargeGoldenGear = textureLoader.load('./assets/img/logo/logoComponents/BigGear_Gold01.gif')
 				const logo_LargeGoldenGear2 = textureLoader.load('./assets/img/logo/logoComponents/BigGear_Gold02.gif')
 				const logo_LargeGoldenGear3 = textureLoader.load('./assets/img/logo/logoComponents/BigGear_Gold03.png')
@@ -3302,6 +3306,8 @@
 				const mainUIDisplay9_L0 = textureLoader.load('./assets/img/hud/background/UI-HUD-02.jpg')
 
 				const mainUIDisplay10_L0 = textureLoader.load('./assets/img/hud/hudMenuCovers/whiteCover01.jpg')
+
+				const mainUIDisplay10_L1 = textureLoader.load('./assets/img/hud/hudMenuCovers/whiteCover02.jpg')
 
 				const mainUIDisplay11_L0 = textureLoader.load('./assets/img/hud/interfaces/HudInterfaceBase01.gif')
 
@@ -5000,6 +5006,18 @@
 
 					switch ( event.code ) {
 
+					
+						case 'ControlLeft' && 'KeyH':
+						gsap.to(mainContainerEntranceVideoContainerA1_L0.position, {
+								duration: .5,
+								delay: 0,
+								x: 0,
+								y: 5, 
+								z: -9,
+							})
+							break
+						
+
 						case 'ArrowUp':
 						case 'KeyW':
 							moveForward = true;
@@ -5025,13 +5043,13 @@
 							canJump = true;
 							break;
 						
-						case 'KeyZ':
-							if ( canJump === true ) velocity.y += 200
-							break;
-						
-						case 'KeyY': 
-							if ( canDrop === true ) velocity.y -= 200
-							break
+						case 'ShiftLeft' && 'Space': 
+							
+							gsap.to(camera.position, {
+								duration: 2.5,
+								delay: .25,
+								y: -25,
+							})
 						
 						case 'KeyT': 
 							transformControls = new TransformControls(camera, renderer.domElement)
@@ -5046,10 +5064,7 @@
 							
 							camera.position.set(0, 0, 0)
 							break
-						
-						case 'KeyShift' && 'KeyV':
-							camera.position.set(1000000, 0, 0)
-							break
+					
 						case 'Digit1':
 							// camera.position.set(0, 5000000, 0)
 							gsap.to(panelColumn01.position, {
@@ -5075,6 +5090,34 @@
 								y: 300000, 
 								z: 12270,
 							})
+							break
+						case 'ControlLeft' && 'ShiftLeft':
+							gsap.to(leftUI_Hand.position, {
+								duration: .5,
+								delay: 0,
+								x: -100,
+								y: 40, 
+								z: -100,
+							})
+							break
+						case 'ControlLeft' && 'KeyZ':
+							gsap.to(cameraUi_Rotator.position, {
+								duration: .5,
+								delay: 0,
+								x: 0,
+								y: -100, 
+								z: -100,
+							})
+							break
+						case 'ControlLeft' && 'ShiftRight':
+							gsap.to(rightUI_Hand.position, {
+								duration: .5,
+								delay: 0,
+								x: 100,
+								y: 40, 
+								z: -100,
+							})
+							break
 
 							// gsap.to(panelColumn06.position, {
 							// 	duration: 12.5,
@@ -5094,16 +5137,16 @@
 						// 		})
 						// 	// MainHudContainerA01_L0.position.set(0, 5, -50)
 						// 	break
-						case 'ShiftRight':
-							// centralSphereMatrix.position.set(0,0,0)
-							// centralSphereMatrix.attach(camera)
-							gsap.to(camera.position, {
-									duration: 7.5,
-									delay: 0,
-									ease: "slow (0.7, 0.7, false)",
-									x: 1000000,
-									y: -.5,
-							})
+						// case 'ShiftRight':
+						// 	// centralSphereMatrix.position.set(0,0,0)
+						// 	// centralSphereMatrix.attach(camera)
+						// 	gsap.to(camera.position, {
+						// 			duration: 7.5,
+						// 			delay: 0,
+						// 			ease: "slow (0.7, 0.7, false)",
+						// 			x: 1000000,
+						// 			y: -.5,
+						// 	})
 							// gsap.to(centralSphereMatrix.position, {
 							// 	duration: 7,
 							// 	delay: 0.5,
@@ -5114,27 +5157,27 @@
 								
 							// MainHudContainerA01_L0.position.set(0, 5, -50)
 							break
-						case 'ShiftLeft':
-							gsap.to(camera.position, {
-									duration: 7.5,
-									delay: 0,
-									x: 0,
-									y: 0,
-									z: 0,
-								})
-							break
+						// case 'ShiftLeft':
+						// 	gsap.to(camera.position, {
+						// 			duration: 7.5,
+						// 			delay: 0,
+						// 			x: 0,
+						// 			y: 0,
+						// 			z: 0,
+						// 		})
+						// 	break
 						
 						
 						// multiple points in animation
-						case 'KeyT' && 'KeyY' && 'ArrowUp' && 'Digit5':
-						gsap.to(mainContainer.position, {
-								duration: 7.5,
-									delay: 0,
-									x: 1000000,
-									y: 85000,
-									z: 0,
-							})
-							break
+						// case 'KeyT' && 'KeyY' && 'ArrowUp' && 'Digit5':
+						// gsap.to(mainContainer.position, {
+						// 		duration: 7.5,
+						// 			delay: 0,
+						// 			x: 1000000,
+						// 			y: 85000,
+						// 			z: 0,
+						// 	})
+						// 	break
 
 							
 					}
@@ -5145,6 +5188,102 @@
 				const onKeyUp = function ( event ) {
 
 					switch ( event.code ) {
+
+						case 'ControlLeft' && 'KeyH':
+							gsap.to(mainContainerEntranceVideoContainerA1_L0.position, {
+								duration: .5,
+								delay: 0,
+								x: 0,
+								y: 5, 
+								z: 116,
+							})
+							break
+
+						case 'ControlLeft' + 'KeyA':
+						case 'Numpad5':
+							gsap.to(camera.position, {
+								duration: 7.5,
+									delay: 0,
+									x: 0,
+									y: 50000,
+									z: 100,
+							})
+							break
+
+						case 'ShiftLeft' + 'BracketLeft':
+						case 'Numpad4' :
+							gsap.to(camera.position, {
+								duration: 7.5,
+									delay: 0,
+									x: -75000,
+									y: 50000,
+									z: 0,
+							})
+							break
+
+						case 'ShiftLeft' && 'BracketRight':
+						case 'Numpad6' :
+							gsap.to(camera.position, {
+								duration: 7.5,
+									delay: 0,
+									x: 75000,
+									y: 50000,
+									z: 0,
+							})
+							break
+
+						case 'ShiftLeft' && 'Quote':
+						case 'Numpad2':
+							gsap.to(camera.position, {
+								duration: 7.5,
+									delay: 0,
+									x: 0,
+									y: 50000,
+									z: 75000,
+							})
+							break
+						
+						case 'ShiftLeft' && 'Equal':
+						case 'Numpad8':
+							gsap.to(camera.position, {
+								duration: 7.5,
+									delay: 0,
+									x: 0,
+									y: 50000,
+									z: -75000,
+							})
+							break
+
+						case 'ShiftRight' + 'ArrowUp':
+						case 'Numpad1' && 'Numpad5':
+							gsap.to(camera.position, {
+								duration: 7.5,
+									delay: 0,
+									x: 0,
+									y: 125000,
+									z: 0,
+							})
+							break
+
+						case 'ShiftRight' + 'ArrowDown':
+							gsap.to(camera.position, {
+								duration: 7.5,
+									delay: 0,
+									x: 0,
+									y: 0,
+									z: 0,
+							})
+							break
+
+						case "ControlLeft" + "KeyG":
+							gsap.to(camera.position, {
+								duration: 7.5,
+									delay: 0,
+									x: -50000,
+									y: 50000,
+									z: 50000,
+							})
+							break
 
 						case 'ArrowUp':
 						case 'KeyW':
@@ -5165,47 +5304,37 @@
 						case 'KeyD':
 							moveRight = false;
 							break;
-						// case 'ShiftLeft': 
+
+						case 'ShiftLeft':
+							gsap.to(leftUI_Hand.position, {
+								duration: .5,
+								delay: 0,
+								x: 0,
+								y: 40, 
+								z: 200,
+							})
+							break
+						case 'ShiftLeft' && 'KeyZ':
+							gsap.to(cameraUi_Rotator.position, {
+								duration: .5,
+								delay: 0,
+								x: 0,
+								y: -100, 
+								z: 200,
+							})
+							break
+							
+						case 'ShiftRight':
+							gsap.to(rightUI_Hand.position, {
+								duration: .5,
+								delay: 0,
+								x: 0,
+								y: 40, 
+								z: 200,
+							})
+							break;
 						
-							
-						// 	// centralSphereMatrix.attach(camera)
-						// 		gsap.from(camera.position, {
-						// 			duration: 7,
-						// 			delay: .5,
-						// 			x: 1000000,
-						// 			y: 0,
-						// 			z: 0
-						// 		})
-
-						// 		gsap.to(camera.position, {
-						// 			duration: 7,
-						// 			delay: .5,
-						// 			x: 0,
-						// 			y: 0,
-						// 			z: 0
-						// 		})
-							
-							
-						// 	break
-						case 'ControlLeft':
-							gsap.to(camera.position, {
-								duration: 7.5,
-									delay: 0,
-									x: 0,
-									y: 50000,
-									z: 0,
-							})
-							break
-
-						case "ControlLeft" && "KeyG":
-							gsap.to(camera.position, {
-								duration: 7.5,
-									delay: 0,
-									x: 0,
-									y: 50000,
-									z: 50000,
-							})
-							break
+						
 
 
 					}
@@ -5314,10 +5443,10 @@
 				centralSphereMatrix.scale.set(2, 2, 2)
 
 				const geo_centralSphereMatrix = new THREE.SphereGeometry(1000, 32, 32)
-				const mat_centralSphereMatrix = new THREE.MeshBasicMaterial({ map: grd_GreenOoze01_int, side: THREE.DoubleSide });
+				const mat_centralSphereMatrix = new THREE.MeshBasicMaterial({ map: mainUIDisplay10_L1, side: THREE.DoubleSide });
 				mesh_centralSphereMatrix = new THREE.Mesh(geo_centralSphereMatrix, mat_centralSphereMatrix)
 				mat_centralSphereMatrix.transparent = true;
-				mat_centralSphereMatrix.alphaMap = grd_GreenOoze01_int
+				mat_centralSphereMatrix.alphaMap = mainUIDisplay10_L1
 				mat_centralSphereMatrix.wireframe = false;
 				mesh_centralSphereMatrix.position.set(0, 0, 0)
 				centralSphereMatrix.add(mesh_centralSphereMatrix);
@@ -5360,8 +5489,8 @@
 				scene.add(transportTubeController)
 
 				transportTube_params = {
-					radiusTop: 10000,
-					radiusBottom: 10000,
+					radiusTop: 7500,
+					radiusBottom: 7500,
 					height: 10000,
 					radialSegments: 32, 
 					heightSegments: 24,
@@ -5388,7 +5517,7 @@
 
 				const mat_transportTube01_toCmd = new THREE.MeshBasicMaterial(
 					{ 
-						map: Grid19White, 
+						map: mainUIDisplay10_L0, 
 						side: THREE.DoubleSide 
 					});
 
@@ -5398,13 +5527,144 @@
 				)
 				
 				mat_transportTube01_toCmd.transparent = false;
-				mat_transportTube01_toCmd.alphaMap = Grid19White;
+				mat_transportTube01_toCmd.alphaMap = mainUIDisplay10_L0;
 				mesh_transportTube01_toCmd.position.set(0, 0, 0);
 				// mesh_transportTube01_toCmd.rotateX( - Math.PI / 2 );
-				mesh_transportTube01_toCmd.scale.y = 4
+				mesh_transportTube01_toCmd.scale.y = 4.5
 
 				transportTube01_toCmd.add(mesh_transportTube01_toCmd)
+
+
+				// Search.transportTube02_toLeftBrain
+				transportTube02_toLeftBrain = new THREE.Group()
+				transportTubeController.add(transportTube02_toLeftBrain)
+				transportTube02_toLeftBrain.position.set(-33000, 55000, 0)
+
+				const mat_transportTube02_toLeftBrain = new THREE.MeshBasicMaterial(
+					{ 
+						map: mainUIDisplay10_L0, 
+						side: THREE.DoubleSide 
+					});
+
+				mesh_transportTube02_toLeftBrain = new THREE.Mesh(
+					geo_transportTube,
+					mat_transportTube02_toLeftBrain
+				)
 				
+				mat_transportTube02_toLeftBrain.transparent = false;
+				mat_transportTube02_toLeftBrain.alphaMap = mainUIDisplay10_L0;
+				mesh_transportTube02_toLeftBrain.position.set(0, 0, 0);
+				mesh_transportTube02_toLeftBrain.rotateX( - Math.PI / 2 );
+				mesh_transportTube02_toLeftBrain.rotateZ( - Math.PI / 2 );
+				mesh_transportTube02_toLeftBrain.scale.y = 4.5
+
+				transportTube02_toLeftBrain.add(mesh_transportTube02_toLeftBrain)
+
+
+				// Search.transportTube03_toRightBrain
+				transportTube03_toRightBrain = new THREE.Group()
+				transportTubeController.add(transportTube03_toRightBrain)
+				transportTube03_toRightBrain.position.set(33000, 55000, 0)
+
+				const mat_transportTube03_toRightBrain = new THREE.MeshBasicMaterial(
+					{ 
+						map: mainUIDisplay10_L0, 
+						side: THREE.DoubleSide 
+					});
+
+				mesh_transportTube03_toRightBrain = new THREE.Mesh(
+					geo_transportTube,
+					mat_transportTube03_toRightBrain
+				)
+				
+				mat_transportTube03_toRightBrain.transparent = false;
+				mat_transportTube03_toRightBrain.alphaMap = mainUIDisplay10_L0;
+				mesh_transportTube03_toRightBrain.position.set(0, 0, 0);
+				mesh_transportTube03_toRightBrain.rotateX( - Math.PI / 2 );
+				mesh_transportTube03_toRightBrain.rotateZ( - Math.PI / 2 );
+				mesh_transportTube03_toRightBrain.scale.y = 4.5
+
+				transportTube03_toRightBrain.add(mesh_transportTube03_toRightBrain)
+
+
+				// Search.transportTube04_toMemories
+				transportTube04_toMemories = new THREE.Group()
+				transportTubeController.add(transportTube04_toMemories)
+				transportTube04_toMemories.position.set(0, 55000, 33000)
+
+				const mat_transportTube04_toMemories = new THREE.MeshBasicMaterial(
+					{ 
+						map: mainUIDisplay10_L0, 
+						side: THREE.DoubleSide 
+					});
+
+				mesh_transportTube04_toMemories = new THREE.Mesh(
+					geo_transportTube,
+					mat_transportTube04_toMemories
+				)
+				
+				mat_transportTube04_toMemories.transparent = false;
+				mat_transportTube04_toMemories.alphaMap = mainUIDisplay10_L0;
+				mesh_transportTube04_toMemories.position.set(0, 0, 0);
+				mesh_transportTube04_toMemories.rotateX( - Math.PI / 2 );
+				// mesh_transportTube04_toMemories.rotateZ( - Math.PI / 2 );
+				mesh_transportTube04_toMemories.scale.y = 4.5
+
+				transportTube04_toMemories.add(mesh_transportTube04_toMemories)
+
+
+				// Search.transportTube05_toDreams
+				transportTube05_toDreams = new THREE.Group()
+				transportTubeController.add(transportTube05_toDreams)
+				transportTube05_toDreams.position.set(0, 55000, -33000)
+
+				const mat_transportTube05_toDreams = new THREE.MeshBasicMaterial(
+					{ 
+						map: mainUIDisplay10_L0, 
+						side: THREE.DoubleSide 
+					});
+
+				mesh_transportTube05_toDreams = new THREE.Mesh(
+					geo_transportTube,
+					mat_transportTube05_toDreams
+				)
+				
+				mat_transportTube05_toDreams.transparent = false;
+				mat_transportTube05_toDreams.alphaMap = mainUIDisplay10_L0;
+				mesh_transportTube05_toDreams.position.set(0, 0, 0);
+				mesh_transportTube05_toDreams.rotateX( - Math.PI / 2 );
+				// mesh_transportTube05_toDreams.rotateZ( - Math.PI / 2 );
+				mesh_transportTube05_toDreams.scale.y = 4.5
+
+				transportTube05_toDreams.add(mesh_transportTube05_toDreams)
+
+
+				// Search.transportTube06_toTheUnknown
+				transportTube06_toTheUnknown = new THREE.Group()
+				transportTubeController.add(transportTube06_toTheUnknown)
+				transportTube06_toTheUnknown.position.set(0, 86000, 0)
+
+				const mat_transportTube06_toTheUnknown = new THREE.MeshBasicMaterial(
+					{ 
+						map: mainUIDisplay10_L0, 
+						side: THREE.DoubleSide 
+					});
+
+				mesh_transportTube06_toTheUnknown = new THREE.Mesh(
+					geo_transportTube,
+					mat_transportTube06_toTheUnknown
+				)
+				
+				mat_transportTube06_toTheUnknown.transparent = false;
+				mat_transportTube06_toTheUnknown.alphaMap = mainUIDisplay10_L0;
+				mesh_transportTube06_toTheUnknown.position.set(0, 0, 0);
+				// mesh_transportTube06_toTheUnknown.rotateX( - Math.PI / 2 );
+				// mesh_transportTube06_toTheUnknown.rotateZ( - Math.PI / 2 );
+				mesh_transportTube06_toTheUnknown.scale.y = 4.5
+
+				transportTube06_toTheUnknown.add(mesh_transportTube06_toTheUnknown)
+
+
 
 
 				
@@ -6931,10 +7191,10 @@
 
 
 				PortfolioDrawer = new THREE.Group()
-				PortfolioDrawer.position.set(-90, 0, 0) 
+				PortfolioDrawer.position.set(-90, 0, 200) 
 
 				PortfolioDrawer1 = new THREE.Group()
-				PortfolioDrawer1.position.set(90, 0, 0) 
+				PortfolioDrawer1.position.set(90, 0, 200) 
 
 				PortfolioTimeTube = new THREE.Group()
 				PortfolioTimeTube.position.set(0, 0, 0)
@@ -7724,7 +7984,7 @@
 				// |- cameraUI_Rotator
 				// -----------------------
 				cameraUi_Rotator = new THREE.Group()
-				cameraUi_Rotator.position.set(0, -100, 0)
+				cameraUi_Rotator.position.set(0, -100, 200)
 
 				cmdArrow01 = new THREE.Group()
 				cmdArrow01.position.set(0, 0, -150)
@@ -8197,7 +8457,8 @@
 				// Search.LeftHand
 				// ###############################################
 				leftUI_Hand = new THREE.Group()
-				leftUI_Hand.position.set(-100, 40, -100)
+				// leftUI_Hand.position.set(-100, 40, -100) // In front of cam
+				leftUI_Hand.position.set(0, 40, 200) // Off Screen
 				leftUI_Hand.scale.set(0.5, 0.5, 0.5)
 
 				const geo_leftUI_Hand = new THREE.CircleGeometry(50, 50)
@@ -8224,8 +8485,9 @@
 				// Search.RightHand
 				// ###############################################
 				rightUI_Hand = new THREE.Group()
-				rightUI_Hand.position.set(100, 40, -100)
-				rightUI_Hand.scale.set(0.5, 0.5, 0.5)
+				// rightUI_Hand.position.set(100, 40, -100) in camera view
+				rightUI_Hand.position.set(0, 40, 200) // Outside of FOV
+				rightUI_Hand.scale.set(0.5, 0.5, 0.5) 
 
 				const geo_rightUI_Hand = new THREE.CircleGeometry(50, 50)
 				const mat_rightUI_Hand = new THREE.MeshBasicMaterial({ map: ui_rightHand02, side: THREE.DoubleSide });
@@ -10743,7 +11005,7 @@
 				// mainContainer.Entrance
 				// -------------------
 				mainContainerEntranceA0_L0 = new THREE.Group()
-				mainContainerEntranceA0_L0.position.set(0, 13000, 35000)
+				mainContainerEntranceA0_L0.position.set(-20000, 13000, 35000)
 
 				
 				
@@ -10764,7 +11026,7 @@
 
 				// Opening Video Test
 				mainContainerEntranceVideoContainerA1_L0 = new THREE.Group()
-				mainContainerEntranceVideoContainerA1_L0.position.set(0, 5, 116)
+				mainContainerEntranceVideoContainerA1_L0.position.set(0, 5, 276)
 				mainContainerEntranceVideoContainerA1_L0.rotation.set(0, 3.14, 0)
 				mainContainerEntranceVideoContainerA1_L0.scale.set(0.075, 0.055, 0.07)
 
@@ -10793,7 +11055,7 @@
 				mesh_mainContainerEntranceVideoContainerA1_L0 = new THREE.Mesh(geo_mainContainerEntranceVideoContainerA1_L0, mat_mainContainerEntranceVideoContainerA1_L0);
 				mat_mainContainerEntranceVideoContainerA1_L0.transparent = true;
 				mat_mainContainerEntranceVideoContainerA1_L0.alphaMap = mainUIDisplay17_L0;
-				mesh_mainContainerEntranceVideoContainerA1_L0.position.set(0, 0, 0);
+				mesh_mainContainerEntranceVideoContainerA1_L0.position.set(0, 0, 275);
 				mesh_mainContainerEntranceVideoContainerA1_L0.rotation.set(0, 3.14, 0);
 				mesh_mainContainerEntranceVideoContainerA1_L0.rotateY( - Math.PI / 2 );
 				mesh_mainContainerEntranceVideoContainerA1_L0.scale.y = 90
@@ -12549,17 +12811,19 @@
 				// Distance Location
 				// RealityOfUnknowns_Root_L0.position.set(0, 100000, 9500000)
 				// RealityOfUnknowns_Root_L0.position.set(0, -883000, 0)
-				RealityOfUnknowns_Root_L0.position.set(0, 5000000, 0)
+				// RealityOfUnknowns_Root_L0.position.set(0, -400000, 0)
+				RealityOfUnknowns_Root_L0.position.set(0, 10000000, 0)
+				RealityOfUnknowns_Root_L0.scale.set(.5, .5, .5)
 
 				// Near Location
 				// RealityOfUnknowns_Root_L0.position.set(0, 100000, 0)
 
 				// Outer wall - Start
 				const geo_RealityOfUknowns_A1_L0 = new THREE.OctahedronGeometry(1000000, 0)
-				const mat_RealityOfUknowns_A1_L0 = new THREE.MeshBasicMaterial({ map: testImg08, side: THREE.DoubleSide });
+				const mat_RealityOfUknowns_A1_L0 = new THREE.MeshBasicMaterial({ map: testImg04, side: THREE.DoubleSide });
 				mesh_RealityOfUknowns_A1_L0 = new THREE.Mesh(geo_RealityOfUknowns_A1_L0, mat_RealityOfUknowns_A1_L0)
 				mat_RealityOfUknowns_A1_L0.transparent = false;
-				mat_RealityOfUknowns_A1_L0.alphaMap = testImg08
+				mat_RealityOfUknowns_A1_L0.alphaMap = testImg04
 				mat_RealityOfUknowns_A1_L0.wireframe = false;
 				mesh_RealityOfUknowns_A1_L0.position.set(0, 895000, 200)
 				mesh_RealityOfUknowns_A1_L0.rotateY( - Math.PI / 3.14 );
@@ -12587,7 +12851,7 @@
 				// Outer wall Grid - End
 
 				// Vertical Measure Pole
-				const geo_RealityofUnknownsVerticalMeasure_A1_L0 = new THREE.BoxGeometry(500, 75000, 500, 64, 64, 64)
+				const geo_RealityofUnknownsVerticalMeasure_A1_L0 = new THREE.BoxGeometry(500.1, 75000, 500, 64, 64, 64)
 				const mat_RealityofUnknownsVerticalMeasure_A1_L0 = new THREE.MeshBasicMaterial({ map: testImg05, side: THREE.DoubleSide });
 				mesh_RealityofUnknownsVerticalMeasure_A1_L0 = new THREE.Mesh(geo_RealityofUnknownsVerticalMeasure_A1_L0, mat_RealityofUnknownsVerticalMeasure_A1_L0);
 				mat_RealityofUnknownsVerticalMeasure_A1_L0.transparent = true;
@@ -12601,7 +12865,7 @@
 
 
 				// Horizontal Measure Pole A1
-				const geo_RealityofUnknownsHorizontalMeasure_A1_L0 = new THREE.BoxGeometry(75000, 500, 500, 64, 64, 64)
+				const geo_RealityofUnknownsHorizontalMeasure_A1_L0 = new THREE.BoxGeometry(75000, 500.1, 500, 64, 64, 64)
 				const mat_RealityofUnknownsHorizontalMeasure_A1_L0 = new THREE.MeshBasicMaterial({ map: testImg05, side: THREE.DoubleSide });
 				mesh_RealityofUnknownsHorizontalMeasure_A1_L0 = new THREE.Mesh(geo_RealityofUnknownsHorizontalMeasure_A1_L0, mat_RealityofUnknownsHorizontalMeasure_A1_L0);
 				mat_RealityofUnknownsHorizontalMeasure_A1_L0.transparent = true;
@@ -12669,14 +12933,14 @@
 				RealityUnknown_MainFloor_A1_L0.position.set(0, 900000, 0)
 
 				// Width, Height, Depth
-				const geo_RealityUnknown_MainFloor_A1_L0 = new THREE.BoxGeometry(10000, 100, 10000, 64, 64, 64)
-				const mat_RealityUnknown_MainFloor_A1_L0 = new THREE.MeshBasicMaterial({ map: testImg05, side: THREE.DoubleSide });
+				const geo_RealityUnknown_MainFloor_A1_L0 = new THREE.BoxGeometry(10000, 10000, 10000, 64, 64, 64)
+				const mat_RealityUnknown_MainFloor_A1_L0 = new THREE.MeshBasicMaterial({ map: grd_GreenOoze01_int, side: THREE.DoubleSide });
 				mesh_RealityUnknown_MainFloor_A1_L0 = new THREE.Mesh(geo_RealityUnknown_MainFloor_A1_L0, mat_RealityUnknown_MainFloor_A1_L0);
 				mat_RealityUnknown_MainFloor_A1_L0.transparent = false;
-				mat_RealityUnknown_MainFloor_A1_L0.alphaMap = testImg05;
+				mat_RealityUnknown_MainFloor_A1_L0.alphaMap = grd_GreenOoze01_int;
 				// mesh_RealityUnknown_MainFloor_A1_L0.position.set(-21628, 85323, -40228);
 				mesh_RealityUnknown_MainFloor_A1_L0.position.set(0, 0, 0);
-				mesh_RealityUnknown_MainFloor_A1_L0.scale.set(26, 26, 26);
+				mesh_RealityUnknown_MainFloor_A1_L0.scale.set(25, 25, 25);
 				mesh_RealityUnknown_MainFloor_A1_L0.rotation.set(0, -11.78, 0)
 				// mesh_RealityUnknown_MainFloor_A1_L0.rotateX( - Math.PI / 2 );
 				RealityUnknown_MainFloor_A1_L0.add(mesh_RealityUnknown_MainFloor_A1_L0)
@@ -12700,7 +12964,7 @@
 				mat_RealityUnknown_UpperFloor_Lvln1.transparent = false;
 				mat_RealityUnknown_UpperFloor_Lvln1.alphaMap = testImg05;
 				// mesh_RealityUnknown_UpperFloor_Lvln1.position.set(-21628, 85323, -40228);
-				mesh_RealityUnknown_UpperFloor_Lvln1.position.set(0, 0, 0);
+				mesh_RealityUnknown_UpperFloor_Lvln1.position.set(0, -10000, 0);
 				mesh_RealityUnknown_UpperFloor_Lvln1.scale.set(26, 26, 26);
 				mesh_RealityUnknown_UpperFloor_Lvln1.rotation.set(0, -11.78, 0)
 				// mesh_RealityUnknown_UpperFloor_Lvln1.rotateX( - Math.PI / 2 );
@@ -12769,10 +13033,10 @@
 
 				// Width, Height, Depth
 				const geo_RealityUnknown_UpperFloor_Lvln4 = new THREE.BoxGeometry(10000, 100, 10000, 64, 64, 64)
-				const mat_RealityUnknown_UpperFloor_Lvln4 = new THREE.MeshBasicMaterial({ map: testImg05, side: THREE.DoubleSide });
+				const mat_RealityUnknown_UpperFloor_Lvln4 = new THREE.MeshBasicMaterial({ map: testImg07, side: THREE.DoubleSide });
 				mesh_RealityUnknown_UpperFloor_Lvln4 = new THREE.Mesh(geo_RealityUnknown_UpperFloor_Lvln4, mat_RealityUnknown_UpperFloor_Lvln4);
 				mat_RealityUnknown_UpperFloor_Lvln4.transparent = false;
-				mat_RealityUnknown_UpperFloor_Lvln4.alphaMap = testImg05;
+				mat_RealityUnknown_UpperFloor_Lvln4.alphaMap = testImg07;
 				// mesh_RealityUnknown_UpperFloor_Lvln4.position.set(-21628, 85323, -40228);
 				mesh_RealityUnknown_UpperFloor_Lvln4.position.set(0, 0, 0);
 				mesh_RealityUnknown_UpperFloor_Lvln4.scale.set(26, 26, 26);
@@ -12790,14 +13054,14 @@
 				// Upper Floor Lvl -5 - {Start}
 				// ----------------------------------------------------------------
 				RealityUnknown_UpperFloor_Lvln5 = new THREE.Group()
-				RealityUnknown_UpperFloor_Lvln5.position.set(0, 100000, 0)
+				RealityUnknown_UpperFloor_Lvln5.position.set(0, 130000, 0)
 
 				// Width, Height, Depth
 				const geo_RealityUnknown_UpperFloor_Lvln5 = new THREE.BoxGeometry(7500, 100, 7500, 64, 64, 64)
-				const mat_RealityUnknown_UpperFloor_Lvln5 = new THREE.MeshBasicMaterial({ map: testImg05, side: THREE.DoubleSide });
+				const mat_RealityUnknown_UpperFloor_Lvln5 = new THREE.MeshBasicMaterial({ map: testImg08, side: THREE.DoubleSide });
 				mesh_RealityUnknown_UpperFloor_Lvln5 = new THREE.Mesh(geo_RealityUnknown_UpperFloor_Lvln5, mat_RealityUnknown_UpperFloor_Lvln5);
 				mat_RealityUnknown_UpperFloor_Lvln5.transparent = false;
-				mat_RealityUnknown_UpperFloor_Lvln5.alphaMap = testImg05;
+				mat_RealityUnknown_UpperFloor_Lvln5.alphaMap = testImg08;
 				// mesh_RealityUnknown_UpperFloor_Lvln5.position.set(-21628, 85323, -40228);
 				mesh_RealityUnknown_UpperFloor_Lvln5.position.set(0, 0, 0);
 				mesh_RealityUnknown_UpperFloor_Lvln5.scale.set(26, 26, 26);
@@ -12814,14 +13078,14 @@
 				// Upper Floor Lvl 1 - {Start}
 				// ----------------------------------------------------------------
 				RealityUnknown_UpperFloor_Lvl1 = new THREE.Group()
-				RealityUnknown_UpperFloor_Lvl1.position.set(0, 1000000, 0)
+				RealityUnknown_UpperFloor_Lvl1.position.set(0, 1300000, 0)
 
 				// Width, Height, Depth
 				const geo_RealityUnknown_UpperFloor_Lvl1 = new THREE.BoxGeometry(10000, 100, 10000, 64, 64, 64)
-				const mat_RealityUnknown_UpperFloor_Lvl1 = new THREE.MeshBasicMaterial({ map: testImg05, side: THREE.DoubleSide });
+				const mat_RealityUnknown_UpperFloor_Lvl1 = new THREE.MeshBasicMaterial({ map: testImg07, side: THREE.DoubleSide });
 				mesh_RealityUnknown_UpperFloor_Lvl1 = new THREE.Mesh(geo_RealityUnknown_UpperFloor_Lvl1, mat_RealityUnknown_UpperFloor_Lvl1);
 				mat_RealityUnknown_UpperFloor_Lvl1.transparent = false;
-				mat_RealityUnknown_UpperFloor_Lvl1.alphaMap = testImg05;
+				mat_RealityUnknown_UpperFloor_Lvl1.alphaMap = testImg07;
 				// mesh_RealityUnknown_UpperFloor_Lvl1.position.set(-21628, 85323, -40228);
 				mesh_RealityUnknown_UpperFloor_Lvl1.position.set(0, 0, 0);
 				mesh_RealityUnknown_UpperFloor_Lvl1.scale.set(26, 26, 26);
@@ -13980,17 +14244,17 @@
 				const folderTimeClockUI = gui.addFolder("######## mainHud ########")
 				
 
-				folderTimeClockUI.add(mesh_transportTube01_toCmd.position, 'x').min(-1500).max(55000).step(100).name('Cc-Back-x');
-				folderTimeClockUI.add(mesh_transportTube01_toCmd.position, 'y').min(-2300).max(55300).step(100).name('Cc-Back-y');
-				folderTimeClockUI.add(mesh_transportTube01_toCmd.position, 'z').min(-20000).max(20000).step(1).name('Cc-Back-z');
+				folderTimeClockUI.add(mesh_transportTube06_toTheUnknown.position, 'x').min(-1500).max(55000).step(100).name('Cc-Back-x');
+				folderTimeClockUI.add(mesh_transportTube06_toTheUnknown.position, 'y').min(-10300).max(55300).step(100).name('Cc-Back-y');
+				folderTimeClockUI.add(mesh_transportTube06_toTheUnknown.position, 'z').min(-20000).max(20000).step(1).name('Cc-Back-z');
 
-				folderTimeClockUI.add(mesh_transportTube01_toCmd.rotation, 'x').min(-360).max(360).step(1).name('Rotation-x');
-				folderTimeClockUI.add(mesh_transportTube01_toCmd.rotation, 'y').min(-360).max(360).step(1).name('Rotation-y');
-				folderTimeClockUI.add(mesh_transportTube01_toCmd.rotation, 'z').min(-360).max(360).step(1).name('Rotation-z');
+				folderTimeClockUI.add(mesh_transportTube06_toTheUnknown.rotation, 'x').min(-360).max(360).step(1).name('Rotation-x');
+				folderTimeClockUI.add(mesh_transportTube06_toTheUnknown.rotation, 'y').min(-360).max(360).step(1).name('Rotation-y');
+				folderTimeClockUI.add(mesh_transportTube06_toTheUnknown.rotation, 'z').min(-360).max(360).step(1).name('Rotation-z');
 
-				folderTimeClockUI.add(mesh_transportTube01_toCmd.scale, 'x').min(-100).max(100).step(1).name('Scale-x');
-				folderTimeClockUI.add(mesh_transportTube01_toCmd.scale, 'y').min(-100).max(100).step(1).name('Scale-y');
-				folderTimeClockUI.add(mesh_transportTube01_toCmd.scale, 'z').min(-100).max(100).step(1).name('Scale-z');
+				folderTimeClockUI.add(mesh_transportTube06_toTheUnknown.scale, 'x').min(-100).max(100).step(1).name('Scale-x');
+				folderTimeClockUI.add(mesh_transportTube06_toTheUnknown.scale, 'y').min(-100).max(100).step(1).name('Scale-y');
+				folderTimeClockUI.add(mesh_transportTube06_toTheUnknown.scale, 'z').min(-100).max(100).step(1).name('Scale-z');
 
 
 				
@@ -14260,6 +14524,14 @@
 				mesh_timeSphere_L2.rotation.y = time * 0.0005;
 				mesh_Tube01.rotation.y = time * 0.005
 				mesh_Torus01.rotation.z = time * 0.0001
+
+				// TravelTubes
+				mesh_transportTube01_toCmd.rotation.y = time * 0.0005
+				transportTube02_toLeftBrain.rotation.y = time * 0.0005
+				transportTube03_toRightBrain.rotation.y = time * 0.0005
+				transportTube04_toMemories.rotation.y = time * 0.0005
+				transportTube05_toDreams.rotation.y = time * 0.0005
+				transportTube06_toTheUnknown.rotation.y = time * 0.0005
 
 				// Command Center Animations
 				// mat_TimeΔSphere_L0.rotation.y = 0.0001
