@@ -5215,10 +5215,18 @@
 							gsap.to(camera.position, {
 								duration: 7.5,
 									delay: 0,
-									x: -75000,
+									x: -90000,
 									y: 50000,
 									z: 0,
 							})
+							// gsap.to(camera.position, {
+							// 	duration: 2.5,
+							// 		delay: 7.5,
+							// 		x: -90000,
+							// 		y: 32000,
+							// 		z: 15000,
+							// })
+							
 							break
 
 						case 'ShiftLeft' && 'BracketRight':
@@ -5252,10 +5260,17 @@
 									y: 50000,
 									z: -75000,
 							})
+							gsap.to(camera.position, {
+								duration: 2.5,
+									delay: 6.5,
+									x: 0,
+									y: 32000,
+									z: -75000,
+							})
 							break
 
 						case 'ShiftRight' + 'ArrowUp':
-						case 'Numpad1' && 'Numpad5':
+						case 'Numpad1' && 'Numpad3':
 							gsap.to(camera.position, {
 								duration: 7.5,
 									delay: 0,
@@ -5333,7 +5348,12 @@
 								z: 200,
 							})
 							break;
-						
+						case 'KeyM':
+							scene.attach(bothUI_Hands02)
+							break
+							
+						case 'KeyN':
+							camera.attach(bothUI_Hands02)
 						
 
 
@@ -5909,9 +5929,9 @@
 				videoSphere02 = new THREE.Mesh(geo_videoSphere02, video02_Mat);
 				videoSphere02.transparent = true;
 				videoSphere02.alphaMap = video02Tex
-				videoSphere02.position.set(-100, 0, -100);
+				videoSphere02.position.set(-90000, 50000, -100);
 				// videoSphere02.scale.set(59000000, 59000000, 59000000) // 19000000 = original
-				videoSphere02.scale.set(10, 10, 10) // 19000000 = original
+				videoSphere02.scale.set(3000000, 3000000, 3000000) // 19000000 = original
 				videoDomainMatrix.add(videoSphere02);
 				
 
@@ -9636,7 +9656,7 @@
 				const CylinderGeometryParams = {
 					radiusTop: 10, 
 					radiusBottom: 10,
-					height: 10,
+					height: 35,
 					radialSegments: 24,
 					heightSegments: 1,
 					openEnded: true,
@@ -9676,7 +9696,7 @@
 
 				const mat_CylinderRealityA01 = new THREE.MeshBasicMaterial(
 					{
-						map: testImg05,
+						map: Grid19Black,
 						side: THREE.DoubleSide,
 					}
 				)
@@ -9687,7 +9707,7 @@
 				)
 
 				mat_CylinderRealityA01.transparent = false
-				mat_CylinderRealityA01.alphaMap = testImg05
+				mat_CylinderRealityA01.alphaMap = Grid19Black
 				mat_CylinderRealityA01.wireFrame = false
 
 				mesh_CylinderRealityA01.position.set(100, -500, -100)
@@ -9828,7 +9848,7 @@
 
 				const mat_OctahedronRealityA01 = new THREE.MeshBasicMaterial(
 					{
-						map: Grid19Black,
+						map: mainUIDisplay10_L0,
 						side: THREE.DoubleSide,
 					}
 				)
@@ -9839,7 +9859,7 @@
 				)
 
 				mat_OctahedronRealityA01.transparent = false
-				mat_OctahedronRealityA01.alphaMap = Grid19Black
+				mat_OctahedronRealityA01.alphaMap = mainUIDisplay10_L0
 				mat_OctahedronRealityA01.wireFrame = false
 
 				mesh_OctahedronRealityA01.position.set(100, -500, -200)
@@ -10475,12 +10495,13 @@
 
 				// LeftHandSphereC01
 				const geo_leftHandSphereC03 = new THREE.SphereGeometry(handSphereMatrixParams.radius, handSphereMatrixParams.widthSegments, handSphereMatrixParams.heightSegments)
-				const mat_leftHandSphereC03 = new THREE.MeshBasicMaterial({ map: infograph03, side: THREE.DoubleSide });
+				const mat_leftHandSphereC03 = new THREE.MeshBasicMaterial({ map: mainUIDisplay10_L0, side: THREE.DoubleSide });
 				mesh_leftHandSphereC03 = new THREE.Mesh(geo_leftHandSphereC03, mat_leftHandSphereC03)
 				mat_leftHandSphereC03.transparent = false;
-				mat_leftHandSphereC03.alphaMap = infograph03
+				mat_leftHandSphereC03.alphaMap = mainUIDisplay10_L0
 				mat_leftHandSphereC03.wireframe = false;
-				mesh_leftHandSphereC03.position.set(100, 0, -100)
+				mesh_leftHandSphereC03.position.set(-90000, 50000, 0)
+				mesh_leftHandSphereC03.scale.set(2000, 2000, 2000)
 
 				leftHandSphereMatrix.add(mesh_leftHandSphereC03)
 
@@ -10516,7 +10537,8 @@
 				mat_leftHandSphereC06.transparent = false;
 				mat_leftHandSphereC06.alphaMap = random01
 				mat_leftHandSphereC06.wireframe = false;
-				mesh_leftHandSphereC06.position.set(100, 100, -100)
+				mesh_leftHandSphereC06.position.set(-90000, 50000, 0)
+				mesh_leftHandSphereC06.scale.set(3000000, 3000000, 3000000)
 
 				leftHandSphereMatrix.add(mesh_leftHandSphereC06)
 
@@ -10929,8 +10951,8 @@
 				// ------------------------------------------------------------
 				// Main Container
 				mainContainer = new THREE.Group()
-				mainContainer.position.set(1000000, 35000, 0)
-				mainContainer.scale.set(1, 1, 1)
+				mainContainer.position.set(0, 50000, -90000)
+				mainContainer.scale.set(.5, .5, .5)
 
 				// const geo_mainContainer = new THREE.BoxGeometry(50500, 5500, 5500, 64, 64, 64)
 				const geo_mainContainer = new THREE.CylinderGeometry(10000, 10000, 100000, 128, 1, false)
@@ -10938,7 +10960,7 @@
 				mesh_mainContainer = new THREE.Mesh(geo_mainContainer, mat_mainContainer);
 				mat_mainContainer.transparent = false;
 				mat_mainContainer.alphaMap = mainContainerImgL0;
-				mesh_mainContainer.position.set(0, 0, 0);
+				mesh_mainContainer.position.set(-20000000000, 0, 0);
 				// mesh_mainContainer.position.set(-15000, 0, 0);
 				// mesh_mainContainer.scale.set(26, 26, 26);
 				mesh_mainContainer.scale.set(1, 1, 1);
@@ -10952,11 +10974,11 @@
 
 				// |- Main Container Grid
 				const geo_mainContainerGrid = new THREE.BoxGeometry(900, 2850, 3000, 64, 64, 64)
-				const mat_mainContainerGrid = new THREE.MeshBasicMaterial({ map: mainContainerImgL1, side: THREE.DoubleSide });
+				const mat_mainContainerGrid = new THREE.MeshBasicMaterial({ map: mainUI_RealityTray, side: THREE.DoubleSide });
 				mesh_mainContainerGrid = new THREE.Mesh(geo_mainContainerGrid, mat_mainContainerGrid);
 				mat_mainContainerGrid.transparent = false;
 				mat_mainContainerGrid.wireframe = true;
-				mat_mainContainerGrid.alphaMap = mainContainerImgL1;
+				mat_mainContainerGrid.alphaMap = mainUI_RealityTray;
 				mesh_mainContainerGrid.position.set(0, 0, 0);
 				// mesh_mainContainerGrid.position.set(-15000, 0, 0);
 				mesh_mainContainerGrid.scale.set(26, 26, 26);
@@ -10970,11 +10992,11 @@
 
 				// |- Main Container GridL1
 				const geo_mainContainerGridL1 = new THREE.BoxGeometry(3500, 3500, 3500, 64, 64, 64)
-				const mat_mainContainerGridL1 = new THREE.MeshBasicMaterial({ map: mainContainerImgL1, side: THREE.DoubleSide });
+				const mat_mainContainerGridL1 = new THREE.MeshBasicMaterial({ map: mainUI_RealityTray, side: THREE.DoubleSide });
 				mesh_mainContainerGridL1 = new THREE.Mesh(geo_mainContainerGridL1, mat_mainContainerGridL1);
 				mat_mainContainerGridL1.transparent = true;
 				mat_mainContainerGridL1.wireframe = false;
-				mat_mainContainerGridL1.alphaMap = mainContainerImgL1;
+				mat_mainContainerGridL1.alphaMap = mainUI_RealityTray;
 				mesh_mainContainerGridL1.position.set(0, 0, 0);
 				// mesh_mainContainerGridL1.position.set(-15000, 0, 0);
 				mesh_mainContainerGridL1.scale.set(26, 26, 26);
@@ -10988,11 +11010,11 @@
 				
 				// |- Main Container GridL2 - Outside border
 				const geo_mainContainerGridL2 = new THREE.BoxGeometry(4500, 4500, 4500, 64, 64, 64)
-				const mat_mainContainerGridL2 = new THREE.MeshBasicMaterial({ map: mainContainerImgL0, side: THREE.DoubleSide });
+				const mat_mainContainerGridL2 = new THREE.MeshBasicMaterial({ map: mainUIDisplay10_L0, side: THREE.DoubleSide });
 				mesh_mainContainerGridL2 = new THREE.Mesh(geo_mainContainerGridL2, mat_mainContainerGridL2);
 				mat_mainContainerGridL2.transparent = false;
 				mat_mainContainerGridL2.wireframe = false;
-				mat_mainContainerGridL2.alphaMap = mainContainerImgL0;
+				mat_mainContainerGridL2.alphaMap = mainUIDisplay10_L0;
 				mesh_mainContainerGridL2.position.set(0, 0, 0);
 				// mesh_mainContainerGridL2.position.set(-15000, 0, 0);
 				mesh_mainContainerGridL2.scale.set(26, 26, 26);
@@ -14527,10 +14549,10 @@
 
 				// TravelTubes
 				mesh_transportTube01_toCmd.rotation.y = time * 0.0005
-				transportTube02_toLeftBrain.rotation.y = time * 0.0005
-				transportTube03_toRightBrain.rotation.y = time * 0.0005
-				transportTube04_toMemories.rotation.y = time * 0.0005
-				transportTube05_toDreams.rotation.y = time * 0.0005
+				transportTube02_toLeftBrain.rotation.x = time * 0.0005
+				transportTube03_toRightBrain.rotation.x = time * 0.0005
+				transportTube04_toMemories.rotation.z = time * 0.0005
+				transportTube05_toDreams.rotation.z = time * 0.0005
 				transportTube06_toTheUnknown.rotation.y = time * 0.0005
 
 				// Command Center Animations
