@@ -3021,6 +3021,19 @@
 			let mesh_TheTimeClockUI_A1_L5
 
 			let mesh_leftHandHorizontalPlane_A1_L0
+			
+			// TravelTubeA
+			let TravelTubeGroupA
+			let TravelTube_params
+
+			let TravelTubeA_Y01
+			let mesh_TravelTubeA_Y01
+
+			let TravelTubeA_X01
+			let mesh_TravelTubeA_X01
+
+			let TravelTubeA_Z01
+			let mesh_TravelTubeA_Z01
 
 			
 
@@ -3208,6 +3221,10 @@
 
 				const grd_ForestGreen_int = textureLoader.load('./assets/img/backgrounds/SpecialGrids/GridE1-ForestGreen.png')
 
+				const grd_PureBlueOoze_ext = textureLoader.load('./assets/img/backgrounds/SpecialGrids/GridF1-PureGreenOoze.png')
+
+				const grd_PureBlueOoze_int = textureLoader.load('./assets/img/backgrounds/SpecialGrids/GridF1-PureGreenWhiteOoze.png')
+
 
 				// Logo
 				const logo_LargeNeonGreenGear = textureLoader.load('./assets/img/logo/logoComponents/BigGear_NeonGreen.png')
@@ -3216,7 +3233,8 @@
 				const logo_LargeGoldenGear = textureLoader.load('./assets/img/logo/logoComponents/BigGear_Gold01.gif')
 				const logo_LargeGoldenGear2 = textureLoader.load('./assets/img/logo/logoComponents/BigGear_Gold02.gif')
 				const logo_LargeGoldenGear3 = textureLoader.load('./assets/img/logo/logoComponents/BigGear_Gold03.png')
-				const logo_RotatingTriangle = textureLoader.load('./assets/img/logo/logoComponents/RotatingTriangle3.png')
+				const logo_RotatingTriangle = textureLoader.load('./assets/img/logo/LogoIdea01.png')
+				// const logo_RotatingTriangle = textureLoader.load('./assets/img/logo/logoComponents/RotatingTriangle3.png')
 				const logo_MedGear01 = textureLoader.load('./assets/img/logo/logoComponents/MedGear_Gold01.png')
 				const logo_ColorCircle01 = textureLoader.load('./assets/img/logo/logoComponents/ColorCircle01.png')
 				const logo_FlowerCircle01 = textureLoader.load('./assets/img/logo/logoComponents/GreekFlowers01.png')
@@ -5205,8 +5223,8 @@
 								duration: 7.5,
 									delay: 0,
 									x: 0,
-									y: 50000,
-									z: 100,
+									y: 95500,
+									z: 500,
 							})
 							break
 
@@ -5215,8 +5233,8 @@
 							gsap.to(camera.position, {
 								duration: 7.5,
 									delay: 0,
-									x: -90000,
-									y: 50000,
+									x: -175000,
+									y: 95500,
 									z: 0,
 							})
 							// gsap.to(camera.position, {
@@ -5234,8 +5252,8 @@
 							gsap.to(camera.position, {
 								duration: 7.5,
 									delay: 0,
-									x: 75000,
-									y: 50000,
+									x: 175000,
+									y: 95500,
 									z: 0,
 							})
 							break
@@ -5246,8 +5264,8 @@
 								duration: 7.5,
 									delay: 0,
 									x: 0,
-									y: 50000,
-									z: 75000,
+									y: 95500,
+									z: 175000,
 							})
 							break
 						
@@ -5257,15 +5275,15 @@
 								duration: 7.5,
 									delay: 0,
 									x: 0,
-									y: 50000,
-									z: -75000,
+									y: 95500,
+									z: -175000,
 							})
 							gsap.to(camera.position, {
 								duration: 2.5,
 									delay: 6.5,
 									x: 0,
-									y: 32000,
-									z: -75000,
+									y: 82100,
+									z: -173500,
 							})
 							break
 
@@ -5275,8 +5293,17 @@
 								duration: 7.5,
 									delay: 0,
 									x: 0,
-									y: 125000,
+									y: 225000,
 									z: 0,
+							})
+							break
+						case 'Numpad7' && 'Numpad9':
+							gsap.to(camera.position, {
+								duration: 7.5,
+									delay: 0,
+									x: 175000,
+									y: 225000,
+									z: 175000,
 							})
 							break
 
@@ -5533,7 +5560,7 @@
 				// Search.transportTube01_toCmd
 				transportTube01_toCmd = new THREE.Group()
 				transportTubeController.add(transportTube01_toCmd)
-				transportTube01_toCmd.position.set(0, 20000, 0)
+				transportTube01_toCmd.position.set(0, 35000, 0)
 
 				const mat_transportTube01_toCmd = new THREE.MeshBasicMaterial(
 					{ 
@@ -5558,7 +5585,7 @@
 				// Search.transportTube02_toLeftBrain
 				transportTube02_toLeftBrain = new THREE.Group()
 				transportTubeController.add(transportTube02_toLeftBrain)
-				transportTube02_toLeftBrain.position.set(-33000, 55000, 0)
+				transportTube02_toLeftBrain.position.set(-100000, 100000, 0)
 
 				const mat_transportTube02_toLeftBrain = new THREE.MeshBasicMaterial(
 					{ 
@@ -5584,7 +5611,7 @@
 				// Search.transportTube03_toRightBrain
 				transportTube03_toRightBrain = new THREE.Group()
 				transportTubeController.add(transportTube03_toRightBrain)
-				transportTube03_toRightBrain.position.set(33000, 55000, 0)
+				transportTube03_toRightBrain.position.set(100000, 100000, 0)
 
 				const mat_transportTube03_toRightBrain = new THREE.MeshBasicMaterial(
 					{ 
@@ -5610,7 +5637,7 @@
 				// Search.transportTube04_toMemories
 				transportTube04_toMemories = new THREE.Group()
 				transportTubeController.add(transportTube04_toMemories)
-				transportTube04_toMemories.position.set(0, 55000, 33000)
+				transportTube04_toMemories.position.set(0, 100000, 100000)
 
 				const mat_transportTube04_toMemories = new THREE.MeshBasicMaterial(
 					{ 
@@ -5636,7 +5663,7 @@
 				// Search.transportTube05_toDreams
 				transportTube05_toDreams = new THREE.Group()
 				transportTubeController.add(transportTube05_toDreams)
-				transportTube05_toDreams.position.set(0, 55000, -33000)
+				transportTube05_toDreams.position.set(0, 100000, -100000)
 
 				const mat_transportTube05_toDreams = new THREE.MeshBasicMaterial(
 					{ 
@@ -5662,7 +5689,7 @@
 				// Search.transportTube06_toTheUnknown
 				transportTube06_toTheUnknown = new THREE.Group()
 				transportTubeController.add(transportTube06_toTheUnknown)
-				transportTube06_toTheUnknown.position.set(0, 86000, 0)
+				transportTube06_toTheUnknown.position.set(0, 175000, 0)
 
 				const mat_transportTube06_toTheUnknown = new THREE.MeshBasicMaterial(
 					{ 
@@ -5684,8 +5711,112 @@
 
 				transportTube06_toTheUnknown.add(mesh_transportTube06_toTheUnknown)
 
+				
+				// |- Search.TravelTubes
+
+				TravelTubeGroupA = new THREE.Group()
+				TravelTubeGroupA.position.set(0, 100000, 0)
+				scene.add(TravelTubeGroupA)
+
+				TravelTube_params = {
+					radiusTop: 1500,
+					radiusBottom: 1500,
+					height: 10000,
+					radialSegments: 32, 
+					heightSegments: 24,
+					openEnded: false,
+					thetaStart: 0,
+					thetaLength: 6.28,
+				}
+
+				const geo_TravelTubeGroupA = new THREE.CylinderGeometry(
+					TravelTube_params.radiusTop,
+					TravelTube_params.radiusBottom,
+					TravelTube_params.height,
+					TravelTube_params.radialSegments,
+					TravelTube_params.heightSegments,
+					TravelTube_params.openEnded,
+					TravelTube_params.thetaStart,
+					TravelTube_params.thetaLength,
+				)
+
+				// Search.TravelTubeA_Y01
+				TravelTubeA_Y01 = new THREE.Group()
+				TravelTubeA_Y01.position.set(0, 0, -100)
+
+				const mat_TravelTubeA_Y01 = new THREE.MeshBasicMaterial(
+					{ 
+						map: mainUIDisplay10_L0, 
+						side: THREE.DoubleSide 
+					});
+
+				mesh_TravelTubeA_Y01 = new THREE.Mesh(
+					geo_TravelTubeGroupA,
+					mat_TravelTubeA_Y01
+				)
+				
+				mat_TravelTubeA_Y01.transparent = true;
+				mat_TravelTubeA_Y01.alphaMap = mainUIDisplay10_L0;
+				mesh_TravelTubeA_Y01.position.set(0, 0, 0);
+				// mesh_TravelTubeA_Y01.rotateX( - Math.PI / 2 );
+				// mesh_TravelTubeA_Y01.rotateZ( - Math.PI / 2 );
+				mesh_TravelTubeA_Y01.scale.y = 20.5
+
+				TravelTubeA_Y01.add(mesh_TravelTubeA_Y01)
+				TravelTubeGroupA.add(TravelTubeA_Y01)
 
 
+				// Search.TravelTubeA_X01
+				TravelTubeA_X01 = new THREE.Group()
+				TravelTubeA_X01.position.set(0, -4000, -100)
+
+				const mat_TravelTubeA_X01 = new THREE.MeshBasicMaterial(
+					{ 
+						map: mainUIDisplay10_L0, 
+						side: THREE.DoubleSide 
+					});
+
+				mesh_TravelTubeA_X01 = new THREE.Mesh(
+					geo_TravelTubeGroupA,
+					mat_TravelTubeA_X01
+				)
+				
+				mat_TravelTubeA_X01.transparent = true;
+				mat_TravelTubeA_X01.alphaMap = mainUIDisplay10_L0;
+				mesh_TravelTubeA_X01.position.set(0, 0, 0);
+				// mesh_TravelTubeA_X01.rotateX( - Math.PI / 2 );
+				mesh_TravelTubeA_X01.rotateZ( - Math.PI / 2 );
+				mesh_TravelTubeA_X01.scale.y = 30.5
+
+				TravelTubeA_X01.add(mesh_TravelTubeA_X01)
+				TravelTubeGroupA.add(TravelTubeA_X01)
+
+
+
+				// Search.TravelTubeA_Z01
+				TravelTubeA_Z01 = new THREE.Group()
+				TravelTubeA_Z01.position.set(0, -4000, -100)
+
+				const mat_TravelTubeA_Z01 = new THREE.MeshBasicMaterial(
+					{ 
+						map: mainUIDisplay10_L0, 
+						side: THREE.DoubleSide 
+					});
+
+				mesh_TravelTubeA_Z01 = new THREE.Mesh(
+					geo_TravelTubeGroupA,
+					mat_TravelTubeA_Z01
+				)
+				
+				mat_TravelTubeA_Z01.transparent = true;
+				mat_TravelTubeA_Z01.alphaMap = mainUIDisplay10_L0;
+				mesh_TravelTubeA_Z01.position.set(0, 0, 0);
+				mesh_TravelTubeA_Z01.rotateX( - Math.PI / 2 );
+				// mesh_TravelTubeA_Z01.rotateZ( - Math.PI / 2 );
+				mesh_TravelTubeA_Z01.scale.y = 30.5
+
+				TravelTubeA_Z01.add(mesh_TravelTubeA_Z01)
+				TravelTubeGroupA.add(TravelTubeA_Z01)
 
 				
 				
@@ -5929,7 +6060,7 @@
 				videoSphere02 = new THREE.Mesh(geo_videoSphere02, video02_Mat);
 				videoSphere02.transparent = true;
 				videoSphere02.alphaMap = video02Tex
-				videoSphere02.position.set(-90000, 50000, -100);
+				videoSphere02.position.set(-590000, 50000, -100);
 				// videoSphere02.scale.set(59000000, 59000000, 59000000) // 19000000 = original
 				videoSphere02.scale.set(3000000, 3000000, 3000000) // 19000000 = original
 				videoDomainMatrix.add(videoSphere02);
@@ -5981,7 +6112,7 @@
 				videoSphere03 = new THREE.Mesh(geo_videoSphere03, video03_Mat);
 				videoSphere03.transparent = true;
 				videoSphere03.alphaMap = video03_Tex
-				videoSphere03.position.set(100, 50000, -100);
+				videoSphere03.position.set(100, 100000, -100);
 				videoSphere03.scale.set(1000000, 1000000, 1000000)
 				videoDomainMatrix.add(videoSphere03);
 				
@@ -8288,7 +8419,7 @@
 				mat_LogoGearSpinnerG.alphaMap = logo_RotatingTriangle;
 				mesh_LogoGearSpinnerG.position.set(1, 85, 1.73);
 				// mesh_LogoGearSpinnerG.position.set(-15000, 0, 0);
-				mesh_LogoGearSpinnerG.scale.set(0.7, 0.7, 0.7);
+				mesh_LogoGearSpinnerG.scale.set(1.5, 1.5, 1.5);
 				mesh_LogoGearSpinnerG.rotation.set(0, 0, 0)
 				// mesh_LogoGearSpinnerA.rotateX( - Math.PI / 2 );
 
@@ -10500,7 +10631,7 @@
 				mat_leftHandSphereC03.transparent = false;
 				mat_leftHandSphereC03.alphaMap = mainUIDisplay10_L0
 				mat_leftHandSphereC03.wireframe = false;
-				mesh_leftHandSphereC03.position.set(-90000, 50000, 0)
+				mesh_leftHandSphereC03.position.set(-175000, 100000, 0)
 				mesh_leftHandSphereC03.scale.set(2000, 2000, 2000)
 
 				leftHandSphereMatrix.add(mesh_leftHandSphereC03)
@@ -10951,7 +11082,7 @@
 				// ------------------------------------------------------------
 				// Main Container
 				mainContainer = new THREE.Group()
-				mainContainer.position.set(0, 50000, -90000)
+				mainContainer.position.set(0, 100000, -175000)
 				mainContainer.scale.set(.5, .5, .5)
 
 				// const geo_mainContainer = new THREE.BoxGeometry(50500, 5500, 5500, 64, 64, 64)
@@ -10960,7 +11091,7 @@
 				mesh_mainContainer = new THREE.Mesh(geo_mainContainer, mat_mainContainer);
 				mat_mainContainer.transparent = false;
 				mat_mainContainer.alphaMap = mainContainerImgL0;
-				mesh_mainContainer.position.set(-20000000000, 0, 0);
+				mesh_mainContainer.position.set(-2000000000, 0, 0);
 				// mesh_mainContainer.position.set(-15000, 0, 0);
 				// mesh_mainContainer.scale.set(26, 26, 26);
 				mesh_mainContainer.scale.set(1, 1, 1);
@@ -13279,7 +13410,10 @@
 				//#########################################
 				const TimeΔ = new THREE.Group() 
             // TimeΔ.position.set(0, -11000, 0) // normal level
-				TimeΔ.position.set(0, 500000000, 0) // normal level
+				// TimeΔ.position.set(0, 77387, 0) // normal level @ 1scale
+				TimeΔ.position.set(0, 88145, 0)
+				
+				TimeΔ.scale.set(.5, .5, .5) // normal level
 
 
 				const TimeClockParams = {
@@ -13388,10 +13522,10 @@
 
 				// # SphereRuler
 				const geo_CCS_Ruler_L0 = new THREE.SphereGeometry(6000, 32, 32)
-				const mat_CCS_Ruler_L0 = new THREE.MeshBasicMaterial({ map: grd_PureGold01_int, side: THREE.DoubleSide });
+				const mat_CCS_Ruler_L0 = new THREE.MeshBasicMaterial({ map: grd_PureBlueOoze_int, side: THREE.DoubleSide });
 				mesh_CCS_Ruler_L0 = new THREE.Mesh(geo_CCS_Ruler_L0, mat_CCS_Ruler_L0)
 				mat_CCS_Ruler_L0.transparent = true;
-				mat_CCS_Ruler_L0.alphaMap = grd_PureGold01_int
+				mat_CCS_Ruler_L0.alphaMap = grd_PureBlueOoze_int
 				mat_CCS_Ruler_L0.wireframe = false;
 				mesh_CCS_Ruler_L0.position.set(0, 20000, 200)
 				mesh_CCS_Ruler_L0.scale.set(3, 3, 3)
@@ -13399,10 +13533,10 @@
             
 				// TimeΔSphere
 				const geo_TimeΔSphere_L0 = new THREE.SphereGeometry(10000, 32, 32)
-				const mat_TimeΔSphere_L0 = new THREE.MeshBasicMaterial({ map: grd_PureGold01_int, side: THREE.DoubleSide });
+				const mat_TimeΔSphere_L0 = new THREE.MeshBasicMaterial({ map: grd_PureBlueOoze_int, side: THREE.DoubleSide });
 				mesh_TimeΔSphere_L0 = new THREE.Mesh(geo_TimeΔSphere_L0, mat_TimeΔSphere_L0)
 				mat_TimeΔSphere_L0.transparent = true;
-				mat_TimeΔSphere_L0.alphaMap = grd_PureGold01_int
+				mat_TimeΔSphere_L0.alphaMap = grd_PureBlueOoze_int
 				mat_TimeΔSphere_L0.wireframe = false;
 				mesh_TimeΔSphere_L0.position.set(0, 20000, 200)
 				mesh_TimeΔSphere_L0.scale.set(3, 3, 3)
@@ -13427,12 +13561,12 @@
 				// Search.TimeΔ.mainPlatform
 				// Width, Height, Depth
 				const geo_mainPlatform_L01 = new THREE.BoxGeometry(1000, 1000, 1000, 64, 64, 64)
-				const mat_mainPlatform_L01 = new THREE.MeshBasicMaterial({ map: grd_GreenOoze01_int, side: THREE.DoubleSide });
+				const mat_mainPlatform_L01 = new THREE.MeshBasicMaterial({ map: mainUIDisplay10_L0, side: THREE.DoubleSide });
 				mesh_mainPlatform_L01 = new THREE.Mesh(geo_mainPlatform_L01, mat_mainPlatform_L01);
 				mat_mainPlatform_L01.transparent = false;
-				mat_mainPlatform_L01.alphaMap = grd_GreenOoze01_int;
+				mat_mainPlatform_L01.alphaMap = mainUIDisplay10_L0;
 				mesh_mainPlatform_L01.position.set(0, 0, 0);
-				mesh_mainPlatform_L01.scale.set(1, 1, 1)
+				mesh_mainPlatform_L01.scale.set(3, 3, 3)
 				TimeΔCoreSystemContainer.add(mesh_mainPlatform_L01)
 				
 				
@@ -13532,10 +13666,10 @@
 
 				// # Thin Torus Template - For TimeReality Also
 				const geo_OrbitRing01_L01 = new THREE.TorusGeometry(53500, 5500, 64, 64, Math.PI * 2 )
-				const mat_OrbitRing01_L01 = new THREE.MeshBasicMaterial({ map: grd_PureGold01_int, side: THREE.DoubleSide });
+				const mat_OrbitRing01_L01 = new THREE.MeshBasicMaterial({ map: mainUIDisplay10_L0, side: THREE.DoubleSide });
 				mesh_OrbitRing01_L01 = new THREE.Mesh(geo_OrbitRing01_L01, mat_OrbitRing01_L01);
-				mat_OrbitRing01_L01.transparent = false;
-				mat_OrbitRing01_L01.alphaMap = grd_PureGold01_int;
+				mat_OrbitRing01_L01.transparent = true;
+				mat_OrbitRing01_L01.alphaMap = mainUIDisplay10_L0;
 				mesh_OrbitRing01_L01.position.set(0, 20000, 200); 
 				mesh_OrbitRing01_L01.rotateX( - Math.PI / 2 );
 				mesh_OrbitRing01_L01.rotation.x = 22
@@ -13546,10 +13680,10 @@
 
 
 				const geo_OrbitRing02_L01 = new THREE.TorusGeometry(43500, 5500, 64, 64, Math.PI * 2 )
-				const mat_OrbitRing02_L01 = new THREE.MeshBasicMaterial({ map: grd_PureGold01_int, side: THREE.DoubleSide });
+				const mat_OrbitRing02_L01 = new THREE.MeshBasicMaterial({ map: mainUIDisplay10_L0, side: THREE.DoubleSide });
 				mesh_OrbitRing02_L01 = new THREE.Mesh(geo_OrbitRing02_L01, mat_OrbitRing02_L01);
-				mat_OrbitRing02_L01.transparent = false;
-				mat_OrbitRing02_L01.alphaMap = grd_PureGold01_int;
+				mat_OrbitRing02_L01.transparent = true;
+				mat_OrbitRing02_L01.alphaMap = mainUIDisplay10_L0;
 				mesh_OrbitRing02_L01.position.set(0, 20000, 200); 
 				mesh_OrbitRing02_L01.rotateX( - Math.PI / 2 );
 				mesh_OrbitRing02_L01.rotation.x = 22
@@ -13559,10 +13693,10 @@
 
 
 				const geo_OrbitRing03_L01 = new THREE.TorusGeometry(83500, 5500, 64, 64, Math.PI * 2 )
-				const mat_OrbitRing03_L01 = new THREE.MeshBasicMaterial({ map: grd_PureGold01_int, side: THREE.DoubleSide });
+				const mat_OrbitRing03_L01 = new THREE.MeshBasicMaterial({ map: mainUIDisplay10_L0, side: THREE.DoubleSide });
 				mesh_OrbitRing03_L01 = new THREE.Mesh(geo_OrbitRing03_L01, mat_OrbitRing03_L01);
-				mat_OrbitRing03_L01.transparent = false;
-				mat_OrbitRing03_L01.alphaMap = grd_PureGold01_int;
+				mat_OrbitRing03_L01.transparent = true;
+				mat_OrbitRing03_L01.alphaMap = mainUIDisplay10_L0;
 				mesh_OrbitRing03_L01.position.set(0, 20000, 200); 
 				mesh_OrbitRing03_L01.rotateX( - Math.PI / 2 );
 				mesh_OrbitRing03_L01.rotation.x = 22
@@ -13572,10 +13706,10 @@
 
 
 				const geo_OrbitRing04_L01 = new THREE.TorusGeometry(133500, 5500, 64, 64, Math.PI * 2 )
-				const mat_OrbitRing04_L01 = new THREE.MeshBasicMaterial({ map: grd_PureGold01_int, side: THREE.DoubleSide });
+				const mat_OrbitRing04_L01 = new THREE.MeshBasicMaterial({ map: mainUIDisplay10_L0, side: THREE.DoubleSide });
 				mesh_OrbitRing04_L01 = new THREE.Mesh(geo_OrbitRing04_L01, mat_OrbitRing04_L01);
-				mat_OrbitRing04_L01.transparent = false;
-				mat_OrbitRing04_L01.alphaMap = grd_PureGold01_int;
+				mat_OrbitRing04_L01.transparent = true;
+				mat_OrbitRing04_L01.alphaMap = mainUIDisplay10_L0;
 				mesh_OrbitRing04_L01.position.set(0, 20000, 200); 
 				mesh_OrbitRing04_L01.rotateX( - Math.PI / 2 );
 				mesh_OrbitRing04_L01.rotation.x = 22
@@ -13585,10 +13719,10 @@
 
 
 				const geo_OrbitRing05_L01 = new THREE.TorusGeometry(133500, 5500, 64, 64, Math.PI * 2 )
-				const mat_OrbitRing05_L01 = new THREE.MeshBasicMaterial({ map: grd_PureGold01_int, side: THREE.DoubleSide });
+				const mat_OrbitRing05_L01 = new THREE.MeshBasicMaterial({ map: mainUIDisplay10_L0, side: THREE.DoubleSide });
 				mesh_OrbitRing05_L01 = new THREE.Mesh(geo_OrbitRing05_L01, mat_OrbitRing05_L01);
-				mat_OrbitRing05_L01.transparent = false;
-				mat_OrbitRing05_L01.alphaMap = grd_PureGold01_int;
+				mat_OrbitRing05_L01.transparent = true;
+				mat_OrbitRing05_L01.alphaMap = mainUIDisplay10_L0;
 				mesh_OrbitRing05_L01.position.set(0, 20000, 200); 
 				mesh_OrbitRing05_L01.rotateX( - Math.PI / 2 );
 				mesh_OrbitRing05_L01.rotation.x = 14.15
@@ -14241,6 +14375,21 @@
 				folderMainHud4.add(pdfTester01.scale, 'x').min(-100).max(100).step(1).name('Scale-x');
 				folderMainHud4.add(pdfTester01.scale, 'y').min(-100).max(100).step(1).name('Scale-y');
 				folderMainHud4.add(pdfTester01.scale, 'z').min(-100).max(100).step(1).name('Scale-z');
+
+
+				const folderExtra01 = gui.addFolder('Extra Extra!')
+
+				folderExtra01.add(TimeΔCoreSystemContainer.position, 'x').min(-60000).max(60000).step(100).name('[ ⇄ Scroll ]');
+				folderExtra01.add(TimeΔCoreSystemContainer.position, 'y').min(-5000000).max(5000000).step(100).name('[ ⇅ Scroll ]');
+				folderExtra01.add(TimeΔCoreSystemContainer.position, 'z').min(-25000).max(25000).step(100).name('[ ⇄⇅ Scroll ]');
+
+				folderExtra01.add(TimeΔCoreSystemContainer.rotation, 'x').min(-360).max(360).step(1).name('Rotation-x');
+				folderExtra01.add(TimeΔCoreSystemContainer.rotation, 'y').min(-360).max(360).step(1).name('Rotation-y');
+				folderExtra01.add(TimeΔCoreSystemContainer.rotation, 'z').min(-360).max(360).step(1).name('Rotation-z');
+
+				folderExtra01.add(TimeΔCoreSystemContainer.scale, 'x').min(-100).max(100).step(1).name('Scale-x');
+				folderExtra01.add(TimeΔCoreSystemContainer.scale, 'y').min(-100).max(100).step(1).name('Scale-y');
+				folderExtra01.add(TimeΔCoreSystemContainer.scale, 'z').min(-100).max(100).step(1).name('Scale-z');
 				
 
 				// Test Folder 5
@@ -14250,33 +14399,33 @@
 
 				folderMainHud5.add(studyCardParams, 'height', 720, 1440 ).onChange(regenerateWebCard).name('Expand WebPageCard')
 
-				folderMainHud5.add(mesh_leftHandHorizontalPlane_A1_L0.position, 'x').min(-525).max(325).step(1).name('Cc-Back-x');
-				folderMainHud5.add(mesh_leftHandHorizontalPlane_A1_L0.position, 'y').min(-2000).max(2000).step(1).name('Cc-Back-y');
-				folderMainHud5.add(mesh_leftHandHorizontalPlane_A1_L0.position, 'z').min(-2000).max(2000).step(1).name('Cc-Back-z');
+				folderMainHud5.add(TimeΔ.position, 'x').min(-525).max(325).step(1).name('Cc-Back-x');
+				folderMainHud5.add(TimeΔ.position, 'y').min(-200000).max(200000).step(1).name('Cc-Back-y');
+				folderMainHud5.add(TimeΔ.position, 'z').min(-2000).max(2000).step(1).name('Cc-Back-z');
 
-				folderMainHud5.add(mesh_leftHandHorizontalPlane_A1_L0.rotation, 'x').min(-360).max(360).step(1).name('Rotation-x');
-				folderMainHud5.add(mesh_leftHandHorizontalPlane_A1_L0.rotation, 'y').min(-360).max(360).step(1).name('Rotation-y');
-				folderMainHud5.add(mesh_leftHandHorizontalPlane_A1_L0.rotation, 'z').min(-360).max(360).step(1).name('Rotation-z');
+				folderMainHud5.add(TimeΔ.rotation, 'x').min(-360).max(360).step(1).name('Rotation-x');
+				folderMainHud5.add(TimeΔ.rotation, 'y').min(-360).max(360).step(1).name('Rotation-y');
+				folderMainHud5.add(TimeΔ.rotation, 'z').min(-360).max(360).step(1).name('Rotation-z');
 
-				folderMainHud5.add(mesh_leftHandHorizontalPlane_A1_L0.scale, 'x').min(-100).max(100).step(1).name('Scale-x');
-				folderMainHud5.add(mesh_leftHandHorizontalPlane_A1_L0.scale, 'y').min(-100).max(100).step(1).name('Scale-y');
-				folderMainHud5.add(mesh_leftHandHorizontalPlane_A1_L0.scale, 'z').min(-100).max(100).step(1).name('Scale-z');
+				folderMainHud5.add(TimeΔ.scale, 'x').min(-100).max(100).step(1).name('Scale-x');
+				folderMainHud5.add(TimeΔ.scale, 'y').min(-100).max(100).step(1).name('Scale-y');
+				folderMainHud5.add(TimeΔ.scale, 'z').min(-100).max(100).step(1).name('Scale-z');
 
 
 				const folderTimeClockUI = gui.addFolder("######## mainHud ########")
 				
 
-				folderTimeClockUI.add(mesh_transportTube06_toTheUnknown.position, 'x').min(-1500).max(55000).step(100).name('Cc-Back-x');
-				folderTimeClockUI.add(mesh_transportTube06_toTheUnknown.position, 'y').min(-10300).max(55300).step(100).name('Cc-Back-y');
-				folderTimeClockUI.add(mesh_transportTube06_toTheUnknown.position, 'z').min(-20000).max(20000).step(1).name('Cc-Back-z');
+				folderTimeClockUI.add(mesh_leftHandSphereC03.position, 'x').min(-200000).max(55000).step(100).name('Cc-Back-x');
+				folderTimeClockUI.add(mesh_leftHandSphereC03.position, 'y').min(-10300).max(200000).step(100).name('Cc-Back-y');
+				folderTimeClockUI.add(mesh_leftHandSphereC03.position, 'z').min(-20000).max(20000).step(1).name('Cc-Back-z');
 
-				folderTimeClockUI.add(mesh_transportTube06_toTheUnknown.rotation, 'x').min(-360).max(360).step(1).name('Rotation-x');
-				folderTimeClockUI.add(mesh_transportTube06_toTheUnknown.rotation, 'y').min(-360).max(360).step(1).name('Rotation-y');
-				folderTimeClockUI.add(mesh_transportTube06_toTheUnknown.rotation, 'z').min(-360).max(360).step(1).name('Rotation-z');
+				folderTimeClockUI.add(mesh_leftHandSphereC03.rotation, 'x').min(-360).max(360).step(1).name('Rotation-x');
+				folderTimeClockUI.add(mesh_leftHandSphereC03.rotation, 'y').min(-360).max(360).step(1).name('Rotation-y');
+				folderTimeClockUI.add(mesh_leftHandSphereC03.rotation, 'z').min(-360).max(360).step(1).name('Rotation-z');
 
-				folderTimeClockUI.add(mesh_transportTube06_toTheUnknown.scale, 'x').min(-100).max(100).step(1).name('Scale-x');
-				folderTimeClockUI.add(mesh_transportTube06_toTheUnknown.scale, 'y').min(-100).max(100).step(1).name('Scale-y');
-				folderTimeClockUI.add(mesh_transportTube06_toTheUnknown.scale, 'z').min(-100).max(100).step(1).name('Scale-z');
+				folderTimeClockUI.add(mesh_leftHandSphereC03.scale, 'x').min(-100).max(100).step(1).name('Scale-x');
+				folderTimeClockUI.add(mesh_leftHandSphereC03.scale, 'y').min(-100).max(100).step(1).name('Scale-y');
+				folderTimeClockUI.add(mesh_leftHandSphereC03.scale, 'z').min(-100).max(100).step(1).name('Scale-z');
 
 
 				
